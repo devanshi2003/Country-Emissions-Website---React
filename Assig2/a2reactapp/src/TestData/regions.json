@@ -1,0 +1,68 @@
+[
+  {
+    "regionId": 0,
+    "regionName": "All Regions and Countries",
+    "imageUrl": "",
+    "countryCount": 342
+  },
+  {
+    "regionId": 4,
+    "regionName": "Africa (Sub-Saharan) (LMIC)",
+    "imageUrl": "https://cdn.thecoolist.com/wp-content/uploads/2021/02/Most-beautiful-places-in-Africa.jpg",
+    "countryCount": 10
+  },
+  {
+    "regionId": 8,
+    "regionName": "Americas (HIC)",
+    "imageUrl": "https://media.cntraveler.com/photos/57a2278b29716cb04b9387ac/4:3/w_2048,h_1536,c_limit/torres-del-paine-national-park-GettyImages-548748529.jpg",
+    "countryCount": 4
+  },
+  {
+    "regionId": 10,
+    "regionName": "Americas (LMIC)",
+    "imageUrl": "https://theculturetrip.com/wp-content/uploads/2021/03/pedro-lastra-nyvq2juw4_o-unsplash.jpg",
+    "countryCount": 16
+  },
+  {
+    "regionId": 3,
+    "regionName": "Eastern Mediterranean (HIC)",
+    "imageUrl": "https://www.lelongweekend.com/wp-content/uploads/2022/03/LLW-Cala-Coticcio-Beach-scaled.jpg",
+    "countryCount": 6
+  },
+  {
+    "regionId": 5,
+    "regionName": "Eastern Mediterranean (LMIC)",
+    "imageUrl": "https://historyfangirl.com/wp-content/uploads/2020/06/shutterstock_1090496174.jpg",
+    "countryCount": 8
+  },
+  {
+    "regionId": 6,
+    "regionName": "Europe (HIC)",
+    "imageUrl": "https://www.travelandleisure.com/thmb/9WFBvvcWb6iprVAnByZKvCTs_9E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-header-hallstatt-austria-BEAUTEURO0323-640d96b8cfd141c9af4582fd1f11bb42.jpg",
+    "countryCount": 31
+  },
+  {
+    "regionId": 1,
+    "regionName": "Europe (LMIC)",
+    "imageUrl": "https://i.natgeofe.com/n/075e4f53-f271-4f7a-855a-5eccdba43587/01_Europe.jpg",
+    "countryCount": 13
+  },
+  {
+    "regionId": 2,
+    "regionName": "South-East Asia (LMIC)",
+    "imageUrl": "https://deih43ym53wif.cloudfront.net/asia-opt_407671ea25.jpeg",
+    "countryCount": 9
+  },
+  {
+    "regionId": 7,
+    "regionName": "Western Pacific (HIC)",
+    "imageUrl": "https://assets.goaaa.com/image/upload/if_ar_gte_1.0/c_limit,w_934,h_620,q_auto:best/if_else/c_limit,w_500,h_750,q_auto:best/if_end/v1647562761/singularity-migrated-images/mcway-falls-big-sur-california-most-beautiful-places-west-coast-via-magazine-Tom-Tietz-502053202.jpg.jpg",
+    "countryCount": 5
+  },
+  {
+    "regionId": 9,
+    "regionName": "Western Pacific (LMIC)",
+    "imageUrl": "https://assets.goaaa.com/image/upload/c_fill,g_auto,w_1170,h_593,q_auto:best/v1647562756/singularity-migrated-images/cape-perpetua-scenic-area-oregon-most-beautiful-places-west-coast-via-magazine-jennifer-King-hero.jpg.jpg",
+    "countryCount": 6
+  }
+]
