@@ -1,8 +1,19 @@
-import regionsData from '../TestData/regions'
 import RegionCard from './RegionCard'
-
+import { useState, useEffect } from 'react'
 
 const Region = ({ }) => {
+
+    const [regionsData, updateRegionsData] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/A_Regions`)
+            .then(response => response.json())
+            .then(data => updateRegionsData(data))
+            .catch(err => {
+                console.log(err)
+            });
+    }, [])
+
     return (
         <div>
             <div className="card col-4 mb-2" style={{ width: 18 + 'rem' }}>
