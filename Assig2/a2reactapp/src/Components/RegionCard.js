@@ -10,7 +10,7 @@ const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
     return (
         
         <div className="card" style={{ width: '18rem' }}>
-            <Link to="/" style={linkStyle}>
+            <Link to = {"/Countries/" + regionId} style={linkStyle}>
                 <img src={imageUrl} className="card-img-top" alt={"Image of " + regionName} />
                 <div className="card-body">
                     <h5 className="card-title">{regionName}</h5>
