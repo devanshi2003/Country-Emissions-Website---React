@@ -1,6 +1,6 @@
 import './App.css';
 import { Link, Outlet } from "react-router-dom"
-
+import Region from "./Components/Region"
 
 function App() {
   return (
@@ -10,9 +10,10 @@ function App() {
                   <a className="navbar-brand" href="#">Environmental Database</a>
                   <div className="collapse navbar-collapse" id="navbarNav">
                       <ul className="navbar-nav">
-                          <li className="nav-item">
-                              <a className="nav-link" aria-current="page" href="#">Regions</a>
-                          </li>                       
+                          <div className="navbar-nav">
+                              <Link className="nav-link active" to="/Region">Region</Link>
+                              <Link className="nav-link active" to="/Countries">Countries</Link>
+                          </div>
                       </ul>
                   </div>
               </div>
