@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Region from './Components/Region';
 import Countries from './Components/Countries';
+import Cities from './Components/Cities';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,8 @@ root.render(
         <Routes>
             <Route path="/" element={<App />}>
                 <Route path="Region" element={<Region />} />
-                <Route path="Countries" element={<Countries />} />
+                <Route path="Countries" element={<Countries />}/>
+                <Route path="Cities" element={<Cities />} />
             </Route>
         </Routes>
     </BrowserRouter> 
