@@ -7,7 +7,7 @@ function App() {
       <div className="App container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <div className="container-fluid">
-                  <a className="navbar-brand" href="#">Environmental Database</a>
+                  <Link className="nav-link active" to="/">Environmental Data</Link>
                   <div className="collapse navbar-collapse" id="navbarNav">
                       <ul className="navbar-nav">
                           <div className="navbar-nav">
