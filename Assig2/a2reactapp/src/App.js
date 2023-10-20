@@ -12,7 +12,7 @@ function App() {
                       <ul className="navbar-nav">
                           <div className="navbar-nav">
                               <Link className="nav-link active" to="/Region">Region</Link>
-                              <Link className="nav-link active" to="/Countries">Countries</Link>
+                              <Link className="nav-link active" to="/Countries/0">Countries</Link>
                           </div>
                       </ul>
                   </div>
