@@ -25,7 +25,12 @@ const Countries = ({ }) => {
                     <CountriesCard
                         key={country.countryId}
                         countryName={country.countryName}
-                        regionName={countriesData.theRegion.regionName}
+                        cityCount={country.cityCount}
+                        imageUrl={country.imageUrl}
+                        //    regionName={countriesData.theRegion.regionName}
+                        iso3={country.iso3}
+                        emissionDataYearRange={country.emissionDataYearRange}
+                        temperatureDataYearRange={country.temperatureDataYearRange}
                     />
                 ))
             ) : (
