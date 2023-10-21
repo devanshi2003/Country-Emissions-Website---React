@@ -6,17 +6,32 @@ const Countries = ({ }) => {
 
     let params = useParams()
     const [countriesData, updateCountriesData] = useState({})
+    const [searchText, updateQuery] = useState('')
+
 
     useEffect(() => {
-        fetch(`http://localhost:5256/api/B_Countries/CountryList/${params.regionId}`)
+        fetch(`http://localhost:5256/api/B_Countries/CountryList/${params.regionId}?searchText=${searchText}`)
             .then(response => response.json())
             .then(data => updateCountriesData(data))
             .catch(err => {
                 console.log(err)
             });
 
-    }, [])
+    }, [searchText])
 
+    function searchCountry(evt) {
+        const searchText = document.querySelector('[name = "searchText"]').value;
+        updateQuery(searchText);
+        console.log(searchText)
+    }
+
+    function onSubmit(e) {
+
+        e.preventDefault()
+        const form = e.target;
+        const formData = new FormData(form);
+        updateQuery(formData.get("searchText"))
+    }
 
     return (
         <div className="row">
@@ -26,12 +41,12 @@ const Countries = ({ }) => {
                 </div>
             </div>
 
-            <form class="row g-3">
+            <form class="row g-3" method='post' onSubmit={onSubmit}>
                 <div class="col-auto">
-                    <input type="password" class="form-control" id="searchText" placeholder="Search for Country.."/>
+                    <input type="text" class="form-control" name="searchText" placeholder="Search for Country.."/>
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                    <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
                 </div>
             </form>
 
