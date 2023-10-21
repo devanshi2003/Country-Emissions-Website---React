@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import CitiesCard from './CitiesCard'
 
 const Cities = ({ }) => {
 
@@ -25,6 +26,17 @@ const Cities = ({ }) => {
             <div className="card col-4 mb-2" style={{ width: 18 + 'rem' }}>
                 <h5 className="card-title">Cities Page</h5>
             </div>
+            <div className="row">
+                {cities.map((city) => (
+                    <CitiesCard
+                        key={city.cityID}
+                        cityName={city.cityName}
+                    />
+                ))
+                }
+            </div>
+            
+
         </div>
 
     )
