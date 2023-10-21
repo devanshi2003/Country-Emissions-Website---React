@@ -20,6 +20,12 @@ const Countries = ({ }) => {
 
     return (
         <div className="row">
+            <div class="position-relative pt-5">
+                <div class="position-absolute top-50 start-0 translate-middle">
+                    <Link class="btn btn-primary"  to={"/Region"}>Back to Regions</Link>
+
+                </div>
+            </div>
             {countriesData.countryList ? (
                 countriesData.countryList.map((country) => (
                     <CountriesCard

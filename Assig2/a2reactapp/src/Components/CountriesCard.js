@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYearRange, temperatureDataYearRange }) => {
 
     return (
@@ -10,13 +12,12 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
 
                 {emissionDataYearRange[0] === 0
                     ? <p className="card-text">No Country Emission Data Available </p>
-                    : <p className="card-text">Country Emission Data Available From: {emissionDataYearRange[0]} to {emissionDataYearRange[1]} </p>
-
+                    : <Link class="btn btn-primary mb-2" to={"/Countries"}>View Country Emissions</Link>
                 }
 
                 {temperatureDataYearRange[0] === 0
                     ? <p className="card-text">No Temperature Data Available </p>
-                    : <p className="card-text">Temperature Data Available From: {temperatureDataYearRange[0]} to {temperatureDataYearRange[1]} </p>}
+                    : <Link class="btn btn-primary" to={"/Countries"}>View Temperature Data</Link>}
                
                 </div>
         </div>
