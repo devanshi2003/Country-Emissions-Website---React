@@ -27,6 +27,16 @@ const Cities = ({ }) => {
             <div className="card col-4 mb-2" style={{ width: 18 + 'rem' }}>
                 <h5 className="card-title">Cities Page</h5>
             </div>
+
+            <form class="row g-3" method='post'>
+                <div class="col-auto">
+                    <input type="text" class="form-control" name="searchText" placeholder="Search for City.." />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                </div>
+            </form>
+
             <div className="row">
                 {cities.map((city) => (
                     <CitiesCard
