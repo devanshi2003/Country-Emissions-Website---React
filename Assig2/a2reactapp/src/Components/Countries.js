@@ -19,7 +19,7 @@ const Countries = ({ }) => {
 
     }, [searchText])
 
-    function searchCountry(evt) {
+    function searchCountry() {
         const searchText = document.querySelector('[name = "searchText"]').value;
         updateQuery(searchText);
         console.log(searchText)

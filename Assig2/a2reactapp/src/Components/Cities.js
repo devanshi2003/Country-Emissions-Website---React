@@ -5,16 +5,29 @@ import CitiesCard from './CitiesCard'
 const Cities = ({ }) => {
 
     const [cities, updateCities] = useState([])
+    const [searchText, updateQuery] = useState('')
     const params = useParams();
     
     useEffect(() => {
-        fetch(`http://localhost:5256/api/C_Cities/${params.countryId}`)
+        fetch(`http://localhost:5256/api/C_Cities/${params.countryId}?searchText=${searchText}`)
             .then(response => response.json())
             .then(data => updateCities(data))
             .catch(err => {
                 console.log(err)
             });
-    }, [])
+    }, [searchText])
+
+    function searchCity() {
+        const searchText = document.querySelector('[name = "searchText"]').value;
+        updateQuery(searchText);
+    }
+
+    function onSubmit(e) {
+        e.preventDefault()
+        const form = e.target;
+        const formData = new FormData(form);
+        updateQuery(formData.get("searchText"))
+    }
 
     return (
         <div>
@@ -28,12 +41,12 @@ const Cities = ({ }) => {
                 <h5 className="card-title">Cities Page</h5>
             </div>
 
-            <form class="row g-3" method='post'>
+            <form class="row g-3" method='post' onSubmit={onSubmit}>
                 <div class="col-auto">
                     <input type="text" class="form-control" name="searchText" placeholder="Search for City.." />
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                    <button type="submit" value={searchCity} class="btn btn-primary mb-3">Search</button>
                 </div>
             </form>
 
