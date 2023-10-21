@@ -1,6 +1,19 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
+import {useState, useEffect} from 'react'
 
 const Cities = ({ }) => {
+
+    const [cities, updateCities] = useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/C_Cities/53`)
+            .then(response => response.json())
+            .then(data => updateCities(data))
+            .catch(err => {
+                console.log(err)
+            });
+    }, [])
+
     return (
         <div>
             <div class="position-relative pt-5">
