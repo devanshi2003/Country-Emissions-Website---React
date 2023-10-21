@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYearRange, temperatureDataYearRange, countryId }) => {
+const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYearRange, temperatureDataYearRange, countryId, regionId }) => {
 
     return (
         <div className="card" style={{ width: '18rem' }}>
@@ -23,7 +23,7 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
                     : <Link class="btn btn-primary mb-2" to={"/Countries"}>View Temperature Data</Link>}
 
             
-                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId}>View Cities</Link>}
+                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId +"/" + regionId}>View Cities</Link>}
 
 
                 </div>

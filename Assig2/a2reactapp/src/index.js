@@ -17,7 +17,7 @@ root.render(
             <Route path="/" element={<App />}>
                 <Route path="Region" element={<Region />} />
                 <Route path="Countries/:regionId" element={<Countries />} />
-                <Route path="Cities/:countryId" element={<Cities />} />
+                <Route path="Cities/:countryId/:regionId" element={<Cities />} />
 
             </Route>
         </Routes>

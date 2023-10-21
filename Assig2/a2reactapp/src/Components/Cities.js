@@ -20,7 +20,7 @@ const Cities = ({ }) => {
         <div>
             <div class="position-relative pt-5">
                 <div class="position-absolute top-50 start-0 translate-middle">
-                    <Link class="btn btn-primary" to={"/Countries/0"}>Back to Countries</Link>
+                    <Link class="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>
                 </div>
             </div>
 
