@@ -20,7 +20,17 @@ const Countries = ({ }) => {
 
     return (
         <div className="row">
-            <p>Load Data here </p>
+            {countriesData.countryList ? (
+                countriesData.countryList.map((country) => (
+                    <CountriesCard
+                        key={country.countryId}
+                        countryName={country.countryName}
+                        regionName={countriesData.theRegion.regionName}
+                    />
+                ))
+            ) : (
+                <p>Loading data...</p>
+            )}
         </div>
     );
 }
