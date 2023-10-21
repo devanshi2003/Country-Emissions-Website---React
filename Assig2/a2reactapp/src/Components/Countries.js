@@ -1,14 +1,27 @@
-import { Link, useParams} from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import { useState, useEffect } from 'react'
+import CountriesCard from './CountriesCard'
 
 const Countries = ({ }) => {
+
     let params = useParams()
+    const [countriesData, updateCountriesData] = useState({})
+
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/B_Countries/CountryList/${params.regionId}`)
+            .then(response => response.json())
+            .then(data => updateCountriesData(data))
+            .catch(err => {
+                console.log(err)
+            });
+
+    }, [])
+
 
     return (
-        <div className="card col-4 mb-2" style={{ width: 18 + 'rem' }}>
-            <h5 className="card-title">Countries Page</h5>
-            <h6 className="card-title">{params.regionId}</h6>
-            <Link className="btn btn-primary" to="/Cities">Cities</Link>
+        <div className="row">
+            <p>Load Data here </p>
         </div>
-    )
+    );
 }
 export default Countries
