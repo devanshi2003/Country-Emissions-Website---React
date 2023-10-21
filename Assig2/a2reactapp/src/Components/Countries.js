@@ -23,9 +23,19 @@ const Countries = ({ }) => {
             <div class="position-relative pt-5">
                 <div class="position-absolute top-50 start-0 translate-middle">
                     <Link class="btn btn-primary"  to={"/Region"}>Back to Regions</Link>
-
                 </div>
             </div>
+
+            <form class="row g-3">
+                <div class="col-auto">
+                    <input type="password" class="form-control" id="searchText" placeholder="Search for Country.."/>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                </div>
+            </form>
+
+
             {countriesData.countryList ? (
                 countriesData.countryList.map((country) => (
                     <CountriesCard
