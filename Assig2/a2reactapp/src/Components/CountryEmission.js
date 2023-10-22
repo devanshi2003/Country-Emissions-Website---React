@@ -1,8 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 
 const CountryEmission = ({ }) => {
 
     const params = useParams();
+    const [summaryCountryEmissions, updateSummaryCountryEmissions] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/B_Countries/SummaryCountryEmissionData/${params.countryId}`)
+            .then(response => response.json())
+            .then(data => updateSummaryCountryEmissions(data))
+            .catch(err => {
+                console.log(err)
+            });
+
+        }, [])
 
 
     return (
