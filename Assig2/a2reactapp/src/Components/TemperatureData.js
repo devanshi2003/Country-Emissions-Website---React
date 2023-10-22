@@ -1,9 +1,20 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 
 const TemperatureData = ({ }) => {
 
     const params = useParams()
+    const [temperatureData, updateTemperatureData] = useState({})
+
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/B_Countries/CountryTemperatureDetail/${params.countryId}`)
+            .then(respose => respose.json())
+            .then(data => updateTemperatureData(data))
+            .catch(err => {
+                console.log(err)
+            });
+    }, [])
 
     return (
         <div>
@@ -17,11 +28,6 @@ const TemperatureData = ({ }) => {
                 </div>
             </div>
         </div>
-
-
-
-
-
     )
 }
 
