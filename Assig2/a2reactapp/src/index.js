@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Region from './Components/Region';
 import Countries from './Components/Countries';
 import Cities from './Components/Cities';
+import TemperatureData from './Components/TemperatureData'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -18,6 +19,7 @@ root.render(
                 <Route path="Region" element={<Region />} />
                 <Route path="Countries/:regionId" element={<Countries />} />
                 <Route path="Cities/:countryId/:regionId" element={<Cities />} />
+                <Route path="TemperatureData/:countryId" element={<TemperatureData/>} />
 
             </Route>
         </Routes>
