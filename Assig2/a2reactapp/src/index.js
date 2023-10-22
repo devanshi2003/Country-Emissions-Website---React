@@ -19,7 +19,7 @@ root.render(
                 <Route path="Region" element={<Region />} />
                 <Route path="Countries/:regionId" element={<Countries />} />
                 <Route path="Cities/:countryId/:regionId" element={<Cities />} />
-                <Route path="TemperatureData/:countryId" element={<TemperatureData/>} />
+                <Route path="TemperatureData/:countryId/:regionId" element={<TemperatureData/>} />
 
             </Route>
         </Routes>
