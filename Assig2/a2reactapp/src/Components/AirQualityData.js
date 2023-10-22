@@ -27,6 +27,42 @@ const AirQualityData = ({ }) => {
                 </div>
             </div>
 
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Year</th>
+                        <th scope="col">PM10 Avg</th>
+                        <th scope="col">PM10 Min</th>
+                        <th scope="col">PM10 Max</th>
+                        <th scope="col">PM25 Avg</th>
+                        <th scope="col">PM25 Min</th>
+                        <th scope="col">PM25 Max</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {airQualityData.theCityAirQualityData
+                        ? (
+                            airQualityData.theCityAirQualityData.map((data) => (
+                                <tr>
+                                    <td>{data.year}</td>
+                                    <td>{data.countryPM10Avg} </td>
+                                    <td>{data.countryPM10Min} </td>
+                                    <td>{data.countryPM10Max} </td>
+                                    <td>{data.countryPM25Avg}</td>
+                                    <td>{data.countryPM25Min}</td>
+                                    <td>{data.countryPM25Max}</td>
+                                </tr>
+                            ))
+                        )
+                        : <p>Loading data...</p>
+                    }         
+                </tbody>
+            </table>
+
+            
+
 
         </div>
 
