@@ -22,7 +22,7 @@ const TemperatureData = () => {
 
             <div className="position-relative pt-5">
                 <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Regions</Link>
+                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>
                 </div>
             </div>
 
@@ -32,6 +32,7 @@ const TemperatureData = () => {
                         <th scope="col">Year</th>
                         <th scope="col">Value</th>
                         <th scope="col">Unit</th>
+                        <th scope="col">Min Max Avg</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,8 @@ const TemperatureData = () => {
                                     <td>{data.theCountryTempData.year}</td>
                                     <td>{data.theCountryTempData.value}</td>
                                     <td>{data.theCountryTempData.unit}</td>
+                                    <td>Avg:{data.regionalAvg} Min:{data.regionalMin} Max:{data.regionalMax}</td>
+
                                 </tr>
                             ))
                         )
