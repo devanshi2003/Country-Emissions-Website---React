@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 const AirQualityData = ({ }) => {
 
     const params = useParams();
+    const [airQualityData, updateAirQualityData] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/C_Cities/GetAirQualityData/${params.cityID}`)
+            .then(response => response.json())
+            .then(data => updateAirQualityData(data))
+            .catch(err => {
+                console.log(err)
+            });
+    }, [])
 
     return (
         <div>
@@ -15,6 +26,7 @@ const AirQualityData = ({ }) => {
                     <Link className="btn btn-primary" to={"/Cities/" + params.countryId + "/" + params.regionId}>Back to Cities </Link>
                 </div>
             </div>
+
 
         </div>
 
