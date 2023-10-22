@@ -6,7 +6,7 @@ const CountryEmission = ({ }) => {
     const params = useParams();
     const [summaryCountryEmissions, updateSummaryCountryEmissions] = useState([]);
     const [elementData, updateElementData] = useState([]);
-
+    const [selectedElement, updateSelectedElement] = useState('');
 
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/SummaryCountryEmissionData/${params.countryId}`)
@@ -28,6 +28,10 @@ const CountryEmission = ({ }) => {
 
     }, []);
 
+    function elementChanged(event) {
+        updateSelectedElement(event.target.value)
+    }
+
     return (
         <div>
 
@@ -40,6 +44,15 @@ const CountryEmission = ({ }) => {
                     <Link class="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>
                 </div>
             </div>
+
+            <select class="form-select" style={{ width: '300px' }} value={selectedElement} onChange={elementChanged} name="selectedVal">
+                <option selected>Choose an element</option>
+                {elementData.map((element) => (
+                    <option value={element.elementId}>{element.elementName}</option>
+                ))}
+            </select>
+
+            <p>Selected Value: {selectedElement}</p>
 
             <table className="table">
                 <thead>
