@@ -24,7 +24,7 @@ root.render(
                 <Route path="Cities/:countryId/:regionId" element={<Cities />} />
                 <Route path="TemperatureData/:countryId/:regionId" element={<TemperatureData/>} />
                 <Route path="CountryEmission/:countryId/:regionId" element={<CountryEmission />} />
-                 <Route path="AirQualityData/:cityID/:countryId" element={<AirQualityData />} />
+                <Route path="AirQualityData/:cityID/:countryId/:regionId" element={<AirQualityData />} />
 
             </Route>
         </Routes>
