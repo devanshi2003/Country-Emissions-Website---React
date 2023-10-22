@@ -1,6 +1,8 @@
-import {Link} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 
-const citiesCard = ({ cityName, recordCount, airQualityYearRange }) => {
+const CitiesCard = ({ cityName, recordCount, airQualityYearRange, cityId }) => {
+
+    const params = useParams();
 
     return (
         <div className="card" style={{ width: '18rem' }}>
@@ -11,7 +13,7 @@ const citiesCard = ({ cityName, recordCount, airQualityYearRange }) => {
                     ? <p className="card-text">No Air Quality Data {recordCount}</p>
                     : <div>
                         <p className="card-text">Total Air Quality Records: {recordCount}</p>
-                        <Link class="btn btn-primary mb-2" to={"/Cities"}>View Air Quality Data</Link>
+                        <Link class="btn btn-primary mb-2" to={"/AirQualityData/" + cityId + "/" + params.countryId}>View Air Quality Data</Link>
                        </div>
                 }
                 
@@ -20,4 +22,4 @@ const citiesCard = ({ cityName, recordCount, airQualityYearRange }) => {
     )
 
 }
-export default citiesCard
+export default CitiesCard

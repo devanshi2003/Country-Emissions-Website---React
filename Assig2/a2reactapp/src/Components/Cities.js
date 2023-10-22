@@ -57,6 +57,7 @@ const Cities = ({ }) => {
                         cityName={city.cityName}
                         recordCount={city.recordCount}
                         airQualityYearRange={city.airQualityYearRange}
+                        cityId={city.cityID}
                     />
                 ))
                 }

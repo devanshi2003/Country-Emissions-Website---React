@@ -9,6 +9,8 @@ import Countries from './Components/Countries';
 import Cities from './Components/Cities';
 import TemperatureData from './Components/TemperatureData'
 import CountryEmission from './Components/CountryEmission'
+import AirQualityData from './Components/AirQualityData'
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,7 +23,9 @@ root.render(
                 <Route path="Countries/:regionId" element={<Countries />} />
                 <Route path="Cities/:countryId/:regionId" element={<Cities />} />
                 <Route path="TemperatureData/:countryId/:regionId" element={<TemperatureData/>} />
-                <Route path="CountryEmission/:countryId/:regionId" element={<CountryEmission />}/>
+                <Route path="CountryEmission/:countryId/:regionId" element={<CountryEmission />} />
+                 <Route path="AirQualityData/:cityID/:countryId" element={<AirQualityData />} />
+
             </Route>
         </Routes>
     </BrowserRouter> 
