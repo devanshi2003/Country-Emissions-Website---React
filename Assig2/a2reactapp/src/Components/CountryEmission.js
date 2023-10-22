@@ -30,6 +30,26 @@ const CountryEmission = ({ }) => {
                 </div>
             </div>
 
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Element</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Total Emission</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {summaryCountryEmissions.map((data) => (
+                        <tr>
+                            <td>{data.element}</td>
+                            <td>{data.year}</td>
+                            <td>{data.totalValue}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
         </div>
     )
 }
