@@ -5,6 +5,8 @@ const CountryEmission = ({ }) => {
 
     const params = useParams();
     const [summaryCountryEmissions, updateSummaryCountryEmissions] = useState([]);
+    const [elementData, updateElementData] = useState([]);
+
 
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/SummaryCountryEmissionData/${params.countryId}`)
@@ -14,8 +16,17 @@ const CountryEmission = ({ }) => {
                 console.log(err)
             });
 
-        }, [])
+    }, []);
 
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/B_Countries/GetElementList`)
+            .then(response => response.json())
+            .then(data => updateElementData(data))
+            .catch(err => {
+                console.log(err)
+            });
+
+    }, []);
 
     return (
         <div>
