@@ -15,7 +15,7 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
                 
                 {emissionDataYearRange[0] === 0
                     ? <p className="card-text">No Country Emission Data Available </p>
-                    : <Link class="btn btn-primary mb-2" to={"/Countries"}>View Country Emissions</Link>
+                    : <Link class="btn btn-primary mb-2" to={"/CountryEmission/" + countryId}>View Country Emissions</Link>
                 }
 
                 {temperatureDataYearRange[0] === 0

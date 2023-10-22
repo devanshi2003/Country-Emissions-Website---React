@@ -8,6 +8,7 @@ import Region from './Components/Region';
 import Countries from './Components/Countries';
 import Cities from './Components/Cities';
 import TemperatureData from './Components/TemperatureData'
+import CountryEmission from './Components/CountryEmission'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -20,7 +21,7 @@ root.render(
                 <Route path="Countries/:regionId" element={<Countries />} />
                 <Route path="Cities/:countryId/:regionId" element={<Cities />} />
                 <Route path="TemperatureData/:countryId/:regionId" element={<TemperatureData/>} />
-
+                <Route path="CountryEmission/:countryId" element={<CountryEmission />}/>
             </Route>
         </Routes>
     </BrowserRouter> 
