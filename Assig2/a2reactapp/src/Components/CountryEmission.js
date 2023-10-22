@@ -7,6 +7,7 @@ const CountryEmission = ({ }) => {
     const [summaryCountryEmissions, updateSummaryCountryEmissions] = useState([]);
     const [elementData, updateElementData] = useState([]);
     const [selectedElement, updateSelectedElement] = useState('');
+    const [countryEmission, updateCountryEmission] = useState('');
 
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/SummaryCountryEmissionData/${params.countryId}`)
@@ -27,6 +28,16 @@ const CountryEmission = ({ }) => {
             });
 
     }, []);
+
+    useEffect(() => {
+        fetch(`http://localhost:5256/api/B_Countries/CountryEmissionData/${params.countryId}?elementId=${selectedElement}`)
+            .then(response => response.json())
+            .then(data => updateCountryEmission(data))
+            .catch(err => {
+                console.log(err)
+            });
+
+    }, [selectedElement]);
 
     function elementChanged(event) {
         updateSelectedElement(event.target.value)
