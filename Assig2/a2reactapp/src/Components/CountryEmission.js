@@ -68,30 +68,35 @@ const CountryEmission = ({ }) => {
                 ))}
             </select>
 
-            <p>Selected Value: {selectedElement}</p>
+            {/*<p>Selected Value: {selectedElement}</p>*/}
 
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Year</th>
-                        <th scope="col">Item Name</th>
-                        <th scope="col">Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        countryEmission ?countryEmission.map((data) => (
+            {selectedElement !== 0 && selectedElement !== 'Choose an element' ? (
+
+                <table className="table">
+                    <thead>
                         <tr>
-                            <td>{data.year}</td>
-                            <td>{data.itemName}</td>
-                            <td>{data.value}</td>
-                            </tr>                       
-                        ))
-                    :<p>Select Element to Load Data</p>
-                }
+                            <th scope="col">Year</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            countryEmission ? countryEmission.map((data) => (
+                                <tr>
+                                    <td>{data.year}</td>
+                                    <td>{data.itemName}</td>
+                                    <td>{data.value}</td>
+                                </tr>
+                            ))
+                                : <p>No data to show</p>
+                        }
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            )
+                : <p> Select an element to view data</p>
+            }
 
             <table className="table">
                 <thead>
