@@ -30,16 +30,20 @@ const CountryEmission = ({ }) => {
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:5256/api/B_Countries/CountryEmissionData/${params.countryId}?elementId=${selectedElement}`)
-            .then(response => response.json())
-            .then(data => updateCountryEmission(data))
-            .catch(err => {
-                console.log(err)
-            });
+        if (selectedElement !== 0 && selectedElement != 'Choose an element') {
+            fetch(`http://localhost:5256/api/B_Countries/CountryEmissionData/${params.countryId}?elementId=${selectedElement}`)
+                .then(response => response.json())
+                .then(data => {
+                    updateCountryEmission(data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
 
     }, [selectedElement]);
 
-    function elementChanged(event) {
+    function elementChanged() {
         const selectedElement = document.querySelector('[name = "selectedElement"]').value;
         updateSelectedElement(selectedElement)
     }
@@ -51,13 +55,13 @@ const CountryEmission = ({ }) => {
                 <h5 className="card-title">Country Emission Data Page </h5>
             </div>
                           
-            <div class="position-relative pt-5">
-                <div class="position-absolute top-50 start-0 translate-middle">
-                    <Link class="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>
+            <div className="position-relative pt-5">
+                <div className="position-absolute top-50 start-0 translate-middle">
+                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>
                 </div>
             </div>
 
-            <select class="form-select" style={{ width: '300px' }} value={selectedElement} onChange={elementChanged} name="selectedElement">
+            <select className="form-select" style={{ width: '300px' }} value={selectedElement} onChange={elementChanged} name="selectedElement">
                 <option selected>Choose an element</option>
                 {elementData.map((element) => (
                     <option value={element.elementId}>{element.elementName}</option>

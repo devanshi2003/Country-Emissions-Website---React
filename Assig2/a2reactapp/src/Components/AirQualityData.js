@@ -37,7 +37,6 @@ const AirQualityData = ({ }) => {
                         <th scope="col">PM25 Avg</th>
                         <th scope="col">PM25 Min</th>
                         <th scope="col">PM25 Max</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -60,10 +59,6 @@ const AirQualityData = ({ }) => {
                     }         
                 </tbody>
             </table>
-
-            
-
-
         </div>
 
     )
