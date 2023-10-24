@@ -16,7 +16,6 @@ const CountryEmission = ({ }) => {
             .catch(err => {
                 console.log(err)
             });
-
     }, []);
 
     useEffect(() => {
@@ -70,53 +69,58 @@ const CountryEmission = ({ }) => {
 
             {/*<p>Selected Value: {selectedElement}</p>*/}
 
-            {selectedElement !== 0 && selectedElement !== 'Choose an element' ? (
+            {summaryCountryEmissions.length > 0 ? (
+                <>
+                    {selectedElement !== 0 && selectedElement !== 'Choose an element' ? (
 
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Year</th>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            countryEmission ? countryEmission.map((data) => (
+                        <table className="table">
+                            <thead>
                                 <tr>
-                                    <td>{data.year}</td>
-                                    <td>{data.itemName}</td>
-                                    <td>{data.value}</td>
+                                    <th scope="col">Year</th>
+                                    <th scope="col">Item Name</th>
+                                    <th scope="col">Value</th>
                                 </tr>
-                            ))
-                                : <p>No data to show</p>
-                        }
+                            </thead>
+                            <tbody>
+                                {
+                                    countryEmission ? countryEmission.map((data) => (
+                                        <tr>
+                                            <td>{data.year}</td>
+                                            <td>{data.itemName}</td>
+                                            <td>{data.value}</td>
+                                        </tr>
+                                    ))
+                                        : <p>No data to show</p>
+                                }
 
-                    </tbody>
-                </table>
+                            </tbody>
+                        </table>
+                    )
+                        : <p> Select an element to view data</p>
+                    }
+
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Element</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Total Emission</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {summaryCountryEmissions.map((data) => (
+                                <tr>
+                                    <td>{data.element}</td>
+                                    <td>{data.year}</td>
+                                    <td>{data.totalValue}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </>
             )
-                : <p> Select an element to view data</p>
-            }
-
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Element</th>
-                        <th scope="col">Year</th>
-                        <th scope="col">Total Emission</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {summaryCountryEmissions.map((data) => (
-                        <tr>
-                            <td>{data.element}</td>
-                            <td>{data.year}</td>
-                            <td>{data.totalValue}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
+            : <p> No Data to Show!</p>
+        }
         </div>
     )
 }
