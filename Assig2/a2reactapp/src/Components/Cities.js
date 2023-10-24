@@ -6,14 +6,20 @@ const Cities = ({ }) => {
 
     const [cities, updateCities] = useState([])
     const [searchText, updateQuery] = useState('')
+    const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
     
     useEffect(() => {
+        setIsLoading(true)
         fetch(`http://localhost:5256/api/C_Cities/${params.countryId}?searchText=${searchText}`)
             .then(response => response.json())
-            .then(data => updateCities(data))
+            .then((data) => {
+                updateCities(data);
+                setIsLoading(false);
+            })
             .catch(err => {
                 console.log(err)
+                setIsLoading(false);
             });
     }, [searchText])
 
@@ -50,19 +56,25 @@ const Cities = ({ }) => {
                 </div>
             </form>
 
-            <div className="row">
-                {cities.map((city) => (
-                    <CitiesCard
-                        key={city.cityID}
-                        cityName={city.cityName}
-                        recordCount={city.recordCount}
-                        airQualityYearRange={city.airQualityYearRange}
-                        cityId={city.cityID}
-                    />
-                ))
-                }
-            </div>
-            
+            {cities.length > 0
+                ? (
+                <div className="row">
+                    {cities.map((city) => (
+                        <CitiesCard
+                            key={city.cityID}
+                            cityName={city.cityName}
+                            recordCount={city.recordCount}
+                            airQualityYearRange={city.airQualityYearRange}
+                            cityId={city.cityID}
+                        />
+                    ))
+                    }
+                </div>
+                )
+
+                : <p>{isLoading === true ? "Loading data" : "No cities found!"}</p>
+
+        }
 
         </div>
 
