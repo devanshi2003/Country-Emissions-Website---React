@@ -7,14 +7,20 @@ const Countries = ({ }) => {
     let params = useParams()
     const [countriesData, updateCountriesData] = useState({})
     const [searchText, updateQuery] = useState('')
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
+        setIsLoading(true);
         fetch(`http://localhost:5256/api/B_Countries/CountryList/${params.regionId}?searchText=${searchText}`)
             .then(response => response.json())
-            .then(data => updateCountriesData(data))
+            .then((data) => {
+                updateCountriesData(data);
+                setIsLoading(false); 
+            })
             .catch(err => {
                 console.log(err)
+                setIsLoading(false);
             });
 
     }, [searchText])
@@ -67,7 +73,11 @@ const Countries = ({ }) => {
                     />
                 ))
             ) : (
-                <p>Loading data...</p>
+                    <div>
+                        <p>{isLoading === true ? "Loading data" : "No countries found for this region."}</p>
+                    </div>
+                    
+
             )}
         </div>
     );
