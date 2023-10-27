@@ -16,8 +16,10 @@ const Region = ({ }) => {
 
     return (
         <div>
-            <div className="card col-4 mb-2" style={{ width: 18 + 'rem' }}>
-                <h5 className="card-title">Regions Page</h5>
+            <div className="full-width-section">
+                <div className="overlay-content">
+                    <h1> Regions</h1>
+                </div>
             </div>
 
             <div className="row">
