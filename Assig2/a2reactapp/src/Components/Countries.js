@@ -42,71 +42,77 @@ const Countries = ({ }) => {
     }
 
     return (
-        <div className="row">
-            <div class="full-width-section full-width-section-countries">
-                <div className="overlay-content">
-                    {countriesData.countryList &&
-                        <>
-                            {regionData.regionId !== 0
-                             ?
-                                <>
-                                    <h2> Countries in {regionData.regionName}  </h2>
-                                    <img src={regionData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + regionData.regionName} />
-                                </>
 
-                            : <h2> All Countries </h2>
-                              
-                        }
-                        <p>Number of Countries: {regionData.countryCount}</p>
-
-                        </>                      
-                    }
-               </div>
-            </div>
-
-            <div class="position-relative pt-5">
-                <div class="position-absolute top-50 start-0 translate-middle">
-                    <Link class="btn btn-primary"  to={"/Region"}>Back to Regions</Link>
-                </div>
-            </div>
-
-            <form class="row g-3" method='post' onSubmit={onSubmit}>
-                <div class="col-auto">
-                    <input type="text" class="form-control" name="searchText" placeholder="Search for Country.."/>
-                </div>
-                <div class="col-auto">
-                    <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
-                </div>
-            </form>
-
-
-            {countriesData.countryList ? (
+        <div>
+        {countriesData.countryList ?
                 <>
-                    {countriesData.countryList.map((country) => (
-                        <CountriesCard
-                            key={country.countryId}
-                            countryName={country.countryName}
-                            cityCount={country.cityCount}
-                            imageUrl={country.imageUrl}
-                            iso3={country.iso3}
-                            emissionDataYearRange={country.emissionDataYearRange}
-                            temperatureDataYearRange={country.temperatureDataYearRange}
-                            countryId={country.countryId}
-                            regionId={params.regionId}
-                        />
-                    ))}
-                    )
-                    </>)
-                    : (
-                    <div>
-                        <p>{isLoading === true ? "Loading data" : "No countries found for this region."}</p>
+                    <div className="row">
+                        <div class="full-width-section full-width-section-countries">
+                            <div className="overlay-content">
+                                {countriesData.countryList &&
+                                    <>
+                                        {regionData.regionId !== 0
+                                            ?
+                                            <>
+                                                <h2> Countries in {regionData.regionName}  </h2>
+                                                <img src={regionData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + regionData.regionName} />
+                                            </>
+
+                                            : <h2> All Countries </h2>
+
+                                        }
+                                        <p>Number of Countries: {regionData.countryCount}</p>
+
+                                    </>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="position-relative pt-5">
+                            <div class="position-absolute top-50 start-0 translate-middle">
+                                <Link class="btn btn-primary" to={"/Region"}>Back to Regions</Link>
+                            </div>
+                        </div>
+
+                        <form class="row g-3" method='post' onSubmit={onSubmit}>
+                            <div class="col-auto">
+                                <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
+                            </div>
+                        </form>
+
+
+                        {countriesData.countryList && (
+                            <>
+                                {countriesData.countryList.map((country) => (
+                                    <CountriesCard
+                                        key={country.countryId}
+                                        countryName={country.countryName}
+                                        cityCount={country.cityCount}
+                                        imageUrl={country.imageUrl}
+                                        iso3={country.iso3}
+                                        emissionDataYearRange={country.emissionDataYearRange}
+                                        temperatureDataYearRange={country.temperatureDataYearRange}
+                                        countryId={country.countryId}
+                                        regionId={params.regionId}
+                                    />
+                                ))}
+                                )
+                            </>)
+                        }
+
+                            )
+
+
                     </div>
-                    
+                </>
 
-            )}
-
-
+                : <p> {isLoading === true ? "Loading data" : "No countries found for this region."}</p>
+            }
         </div>
+
     );
 }
 export default Countries
