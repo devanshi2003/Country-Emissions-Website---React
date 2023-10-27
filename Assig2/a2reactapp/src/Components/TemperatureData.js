@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useLocation } from 'react-router-dom'
 
 const TemperatureData = ({ }) => {
     const params = useParams()
     const [temperatureData, updateTemperatureData] = useState({})
     const [isLoading, setIsLoading] = useState(true);
+    const location = useLocation();
+    const { regionData, countryData } = location.state;
+    console.log(location.state);
 
     useEffect(() => {
         setIsLoading(true);
@@ -28,7 +31,7 @@ const TemperatureData = ({ }) => {
 
             <div className="position-relative pt-5">
                 <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>
+                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId} state={{ regionData, countryData }}>Back to Countries</Link>
                 </div>
             </div>
 
