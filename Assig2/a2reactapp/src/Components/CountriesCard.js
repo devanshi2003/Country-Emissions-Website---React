@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 
 const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYearRange, temperatureDataYearRange, countryId, regionData }) => {
 
+    const countryData = { countryName, imageUrl }
+
 
     return (
         <div className="card" style={{ width: '18rem' }}>
@@ -16,7 +18,7 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
                 
                 {emissionDataYearRange[0] === 0
                     ? <p className="card-text">No Country Emission Data Available </p>
-                    : <Link class="btn btn-primary mb-2" to={"/CountryEmission/" + countryId + "/" + regionData.regionId} state={regionData}>View Country Emissions</Link>
+                    : <Link class="btn btn-primary mb-2" to={"/CountryEmission/" + countryId + "/" + regionData.regionId} state={{ regionData, countryData }}>View Country Emissions</Link>
                 }
 
                 {temperatureDataYearRange[0] === 0
