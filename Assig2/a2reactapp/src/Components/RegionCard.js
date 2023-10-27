@@ -2,23 +2,21 @@ import { Link } from "react-router-dom";
 
 const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
 
-    const linkStyle = {
-        textDecoration: 'none', 
-        color: 'inherit', 
-    };
+
 
     return (
         
-        <div className="card" style={{ width: '18rem' }}>
-           
-                <img src={imageUrl} className="card-img-top" alt={"Image of " + regionName} />
-                <div className="card-body">
-                    <h5 className="card-title">{regionName}</h5>
-                    <h6 className="card-title">{regionId}</h6>
-                    <p className="card-text">{countryCount}</p>
+        <div className="col-lg-4 mt-5">
+            <div className="card border-0"> 
+                <img src={imageUrl} className="rounded-circle mx-auto mt-3" width="140" height="140" alt={"Image of " + regionName} />
+                <div className="card-body d-flex flex-column align-items-center">
+                    <h3 className="card-title text-center">{regionName}</h3>
+                    <p className="card-text">Number of Countries: {countryCount}</p>
+                    <Link className="stretched-link" to={"/Countries/" + regionId}  />
+                </div>
             </div>
-            <Link class="stretched-link" to={"/Countries/" + regionId} style={linkStyle}/>
         </div>
+
     );
 };
 
