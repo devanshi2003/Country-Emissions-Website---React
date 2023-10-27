@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useLocation } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import CountriesCard from './CountriesCard'
 
@@ -9,13 +9,15 @@ const Countries = ({ }) => {
     const [searchText, updateQuery] = useState('')
     const [isLoading, setIsLoading] = useState(true);
 
+    const location = useLocation();
+    const regionData = location.state;
 
     useEffect(() => {
         setIsLoading(true);
         fetch(`http://localhost:5256/api/B_Countries/CountryList/${params.regionId}?searchText=${searchText}`)
             .then(response => response.json())
             .then((data) => {
-                updateCountriesData(data);
+                updateCountriesData(data); 
                 setIsLoading(false); 
             })
             .catch(err => {
@@ -41,6 +43,27 @@ const Countries = ({ }) => {
 
     return (
         <div className="row">
+            <div class="full-width-section full-width-section-countries">
+                <div className="overlay-content">
+                    {countriesData.countryList &&
+                        <>
+                            {regionData.regionId !== 0
+                             ?
+                                <>
+                                    <h2> Countries in {regionData.regionName}  </h2>
+                                    <img src={regionData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + regionData.regionName} />
+                                </>
+
+                            : <h2> All Countries </h2>
+                              
+                        }
+                        <p>Number of Countries: {regionData.countryCount}</p>
+
+                        </>                      
+                    }
+               </div>
+            </div>
+
             <div class="position-relative pt-5">
                 <div class="position-absolute top-50 start-0 translate-middle">
                     <Link class="btn btn-primary"  to={"/Region"}>Back to Regions</Link>
@@ -58,27 +81,31 @@ const Countries = ({ }) => {
 
 
             {countriesData.countryList ? (
-                countriesData.countryList.map((country) => (
-                    <CountriesCard
-                        key={country.countryId}
-                        countryName={country.countryName}
-                        cityCount={country.cityCount}
-                        imageUrl={country.imageUrl}
-                        //    regionName={countriesData.theRegion.regionName}
-                        iso3={country.iso3}
-                        emissionDataYearRange={country.emissionDataYearRange}
-                        temperatureDataYearRange={country.temperatureDataYearRange}
-                        countryId={country.countryId}
-                        regionId={params.regionId}
-                    />
-                ))
-            ) : (
+                <>
+                    {countriesData.countryList.map((country) => (
+                        <CountriesCard
+                            key={country.countryId}
+                            countryName={country.countryName}
+                            cityCount={country.cityCount}
+                            imageUrl={country.imageUrl}
+                            iso3={country.iso3}
+                            emissionDataYearRange={country.emissionDataYearRange}
+                            temperatureDataYearRange={country.temperatureDataYearRange}
+                            countryId={country.countryId}
+                            regionId={params.regionId}
+                        />
+                    ))}
+                    )
+                    </>)
+                    : (
                     <div>
                         <p>{isLoading === true ? "Loading data" : "No countries found for this region."}</p>
                     </div>
                     
 
             )}
+
+
         </div>
     );
 }
