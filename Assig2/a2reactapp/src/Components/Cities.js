@@ -42,39 +42,39 @@ const Cities = ({ }) => {
 
     return (
         <div>
-
-            <div className="row">
-                <div class="full-width-section full-width-section-cities">
-                    <div className="overlay-content">
-                        <h3> Cities in {countryData.countryName} </h3>
-                        {regionData.regionId !== 0 && <h5> Region Name: {regionData.regionName}</h5>}
-                        <img src={countryData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
-                    </div>
-                </div>
-            </div>
-
             <div class="position-relative pt-5">
                 <div class="position-absolute top-50 start-0 translate-middle">
                     <Link class="btn btn-primary" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
                 </div>
             </div>
 
-            <div className="card col-4 mb-2" style={{ width: 18 + 'rem' }}>
-                <h5 className="card-title">Cities Page</h5>
+            <div className="row">
+                <div class="full-width-section full-width-section-cities">
+                    <div className="overlay-content">
+                        <h3> Cities in {countryData.countryName} </h3>
+                        {regionData.regionId !== 0 && <h5> Region Name: {regionData.regionName}</h5>}
+                        <h6>Number of Cities: {countryData.cityCount}</h6>
+                        <img src={countryData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
+                    </div>
+                </div>
             </div>
 
-            <form class="row g-3" method='post' onSubmit={onSubmit}>
-                <div class="col-auto">
-                    <input type="text" class="form-control" name="searchText" placeholder="Search for City.." />
+            {countryData.cityCount > 1 &&
+                <div class="container mt-5">
+                    <form class="row g-3" method='post' onSubmit={onSubmit}>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" name="searchText" placeholder="Search for City.." />
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" value={searchCity} class="btn btn-primary mb-3">Search</button>
+                        </div>
+                        </form>
                 </div>
-                <div class="col-auto">
-                    <button type="submit" value={searchCity} class="btn btn-primary mb-3">Search</button>
-                </div>
-            </form>
+            }
 
             {cities.length > 0
                 ? (
-                <div className="row">
+                <div className="row mt-5">
                     {cities.map((city) => (
                         <CitiesCard
                             key={city.cityID}

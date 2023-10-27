@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYearRange, temperatureDataYearRange, countryId, regionData }) => {
 
-    const countryData = { countryName, imageUrl }
+    const countryData = { countryName, imageUrl, cityCount }
 
 
     return (
