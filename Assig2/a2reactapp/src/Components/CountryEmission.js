@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useLocation } from "react-router-dom"
 
 const CountryEmission = ({ }) => {
 
@@ -8,6 +8,8 @@ const CountryEmission = ({ }) => {
     const [elementData, updateElementData] = useState([]);
     const [selectedElement, updateSelectedElement] = useState(0);
     const [countryEmission, updateCountryEmission] = useState([]);
+    const location = useLocation();
+    const regionData = location.state;
 
     useEffect(() => {
         fetch(`http://localhost:5256/api/B_Countries/SummaryCountryEmissionData/${params.countryId}`)
@@ -56,7 +58,7 @@ const CountryEmission = ({ }) => {
                           
             <div className="position-relative pt-5">
                 <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>
+                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
                 </div>
             </div>
 

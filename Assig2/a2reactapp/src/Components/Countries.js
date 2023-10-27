@@ -97,7 +97,8 @@ const Countries = ({ }) => {
                                         emissionDataYearRange={country.emissionDataYearRange}
                                         temperatureDataYearRange={country.temperatureDataYearRange}
                                         countryId={country.countryId}
-                                        regionId={params.regionId}
+                                        //regionId={params.regionId}
+                                        regionData={regionData}
                                     />
                                 ))}
                                 )
