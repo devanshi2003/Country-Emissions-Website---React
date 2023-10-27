@@ -74,15 +74,16 @@ const Countries = ({ }) => {
                             </div>
                         </div>
 
-                        <form class="row g-3" method='post' onSubmit={onSubmit}>
-                            <div class="col-auto">
-                                <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
-                            </div>
-                        </form>
-
+                        {regionData.countryCount > 1 &&
+                            <form class="row g-3" method='post' onSubmit={onSubmit}>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
+                                </div>
+                            </form>
+                        }
 
                         {countriesData.countryList && (
                             <>
