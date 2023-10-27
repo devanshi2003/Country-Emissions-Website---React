@@ -1,6 +1,7 @@
-import { Link, useParams} from "react-router-dom"
+import { Link, useParams, useLocation} from "react-router-dom"
 import { useState, useEffect } from 'react'
 import CitiesCard from './CitiesCard'
+import Region from "./Region"
 
 const Cities = ({ }) => {
 
@@ -8,6 +9,10 @@ const Cities = ({ }) => {
     const [searchText, updateQuery] = useState('')
     const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
+
+    const location = useLocation();
+    const { regionData, countryData } = location.state;
+    console.log(location.state);
     
     useEffect(() => {
         setIsLoading(true)
@@ -37,6 +42,17 @@ const Cities = ({ }) => {
 
     return (
         <div>
+
+            <div className="row">
+                <div class="full-width-section full-width-section-cities">
+                    <div className="overlay-content">
+                        <h3> Cities in {countryData.countryName} </h3>
+                        {regionData.regionId !== 0 && <h5> Region Name: {regionData.regionName}</h5>}
+                        <img src={countryData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
+                    </div>
+                </div>
+            </div>
+
             <div class="position-relative pt-5">
                 <div class="position-absolute top-50 start-0 translate-middle">
                     <Link class="btn btn-primary" to={"/Countries/" + params.regionId}>Back to Countries</Link>

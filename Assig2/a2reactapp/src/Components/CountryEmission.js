@@ -73,8 +73,6 @@ const CountryEmission = ({ }) => {
                 </div>
             </div>
 
-
-
                           
             <div className="position-relative pt-5">
                 <div className="position-absolute top-50 start-0 translate-middle">

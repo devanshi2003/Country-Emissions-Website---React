@@ -26,7 +26,7 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
                     : <Link class="btn btn-primary mb-2" to={"/TemperatureData/" + countryId + "/" + regionData.regionId} state={regionData}>View Temperature Data</Link>}
 
             
-                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId + "/" + regionData.regionId} state={regionData}>View Cities</Link>}
+                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId + "/" + regionData.regionId} state={{ regionData, countryData }}>View Cities</Link>}
 
 
                 </div>
