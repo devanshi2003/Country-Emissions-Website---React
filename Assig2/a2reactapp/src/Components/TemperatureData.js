@@ -44,14 +44,24 @@ const TemperatureData = ({ }) => {
                     </div>
                 </div>
             </div>
+            <p> Earliest Year: {temperatureData.minYear}</p>
+            <p> Latest Year: {temperatureData.maxYear}</p>
 
             <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">Year</th>
                         <th scope="col">Value</th>
+                        {temperatureData.rawTemperatureData  && temperatureData.rawTemperatureData[0].regionalMin && (
+                            <>
+                                <th scope="col">Min</th>
+                                <th scope="col">Max</th>
+                                <th scope="col">Avg</th>
+                            </>
+                        )}
+
                         <th scope="col">Unit</th>
-                        <th scope="col">Min Max Avg</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -62,8 +72,16 @@ const TemperatureData = ({ }) => {
                                 <tr>
                                     <td>{data.theCountryTempData.year}</td>
                                     <td>{data.theCountryTempData.value}</td>
+                                    {data.regionalMin &&
+                                        <>
+                                        <td>Min:{data.regionalMin}</td>
+                                        <td>Max:{data.regionalMax}</td>
+                                        <td>Avg:{data.regionalAvg}</td>
+                                        </>
+                                    }
+                                             
                                     <td>{data.theCountryTempData.unit}</td>
-                                    <td>Avg:{data.regionalAvg} Min:{data.regionalMin} Max:{data.regionalMax}</td>
+
 
                                 </tr>
                             ))
