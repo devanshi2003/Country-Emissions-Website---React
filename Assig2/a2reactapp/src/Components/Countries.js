@@ -84,7 +84,7 @@ const Countries = ({ }) => {
                                     <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
+                                    <button type="submit" value={searchCountry} class="btn-search btn-primary btn mb-3">Search</button>
                                 </div>
                             </form>
                         )}
