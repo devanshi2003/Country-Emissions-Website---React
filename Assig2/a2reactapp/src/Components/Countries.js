@@ -88,7 +88,7 @@ const Countries = ({ }) => {
                         }
 
                         {countriesData.countryList && (
-                            <>
+                            <>                 
                                 {countriesData.countryList.map((country) => (
                                     <CountriesCard
                                         key={country.countryId}
@@ -100,6 +100,9 @@ const Countries = ({ }) => {
                                         temperatureDataYearRange={country.temperatureDataYearRange}
                                         countryId={country.countryId}
                                         regionId={params.regionId}
+                                        regionName={countriesData.theRegion.regionName}
+                                        countryCount={countriesData.theRegion.countryCount}
+                                        regionImageUrl={countriesData.theRegion.imageUrl}
                                     />
                                 ))}
                                 )
@@ -107,7 +110,6 @@ const Countries = ({ }) => {
                         }
 
                             )
-
 
                     </div>
                 </>
