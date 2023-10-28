@@ -33,7 +33,7 @@ const CountryEmission = ({ }) => {
     }, []);
 
     useEffect(() => {
-        if (selectedElement !== 0 && selectedElement != 'Choose an element') {
+        if (selectedElement !== 0 && selectedElement != 'Select an element') {
             fetch(`http://localhost:5256/api/B_Countries/CountryEmissionData/${params.countryId}?elementId=${selectedElement}`)
                 .then(response => response.json())
                 .then(data => {
@@ -76,49 +76,12 @@ const CountryEmission = ({ }) => {
             </div>
 
                           
-
-
-            <select className="form-select" style={{ width: '300px' }} value={selectedElement} onChange={elementChanged} name="selectedElement">
-                <option selected>Choose an element</option>
-                {elementData.map((element) => (
-                    <option value={element.elementId}>{element.elementName}</option>
-                ))}
-            </select>
-
             {/*<p>Selected Value: {selectedElement}</p>*/}
 
             {summaryCountryEmissions.length > 0 ? (
-                <>
-                    {selectedElement !== 0 && selectedElement !== 'Choose an element' ? (
-
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Year</th>
-                                    <th scope="col">Item Name</th>
-                                    <th scope="col">Value</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    countryEmission ? countryEmission.map((data) => (
-                                        <tr>
-                                            <td>{data.year}</td>
-                                            <td>{data.itemName}</td>
-                                            <td>{data.value}</td>
-                                        </tr>
-                                    ))
-                                        : <p>No data to show</p>
-                                }
-
-                            </tbody>
-                        </table>
-                    )
-                        : <p> Select an element to view data</p>
-                    }
-
-                    <table className="table">
-                        <thead>
+                <>       
+                    <table className="table mt-5 table-hover">
+                        <thead className="table-info">
                             <tr>
                                 <th scope="col">Element</th>
                                 <th scope="col">Year</th>
@@ -130,7 +93,7 @@ const CountryEmission = ({ }) => {
                                 <tr>
                                     <td>{data.element}</td>
                                     <td>{data.year}</td>
-                                    <td>{data.totalValue}</td>
+                                    <td>{data.totalValue.toFixed(2)}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -138,7 +101,42 @@ const CountryEmission = ({ }) => {
                 </>
             )
             : <p> No Data to Show!</p>
-        }
+            }
+
+            <h5 className="mt-5">Select Element to View Item Data</h5>
+            <select className="form-select mt-3" style={{ width: '300px', margin: '0 auto' }} value={selectedElement} onChange={elementChanged} name="selectedElement">
+                <option className="text-center"selected>Select an element</option>
+                {elementData.map((element) => (
+                    <option value={element.elementId}>{element.elementName}</option>
+                ))}
+            </select>
+
+            {selectedElement !== 0 && selectedElement !== 'Select an element' && (
+
+                <table className="table table-hover">
+                    <thead className="table-secondary">
+                        <tr>
+                            <th scope="col">Year</th>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            countryEmission ? countryEmission.map((data) => (
+                                <tr>
+                                    <td>{data.year}</td>
+                                    <td>{data.itemName}</td>
+                                    <td>{data.value.toFixed(2)}</td>
+                                </tr>
+                            ))
+                                : <p>No data to show</p>
+                        }
+
+                    </tbody>
+                </table>
+            )
+            }
         </div>
     )
 }
