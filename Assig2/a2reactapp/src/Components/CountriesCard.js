@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYearRange, temperatureDataYearRange, countryId, regionData }) => {
+const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYearRange, temperatureDataYearRange, countryId, regionId }) => {
 
     const countryData = { countryName, imageUrl, cityCount }
 
@@ -18,15 +18,15 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
                 
                 {emissionDataYearRange[0] === 0
                     ? <p className="card-text">No Country Emission Data Available </p>
-                    : <Link class="btn btn-primary mb-2" to={"/CountryEmission/" + countryId + "/" + regionData.regionId} state={{ regionData, countryData }}>View Country Emissions</Link>
+                    : <Link class="btn btn-primary mb-2" to={"/CountryEmission/" + countryId + "/" + regionId} state={ countryData }>View Country Emissions</Link>
                 }
 
                 {temperatureDataYearRange[0] === 0
                     ? <p className="card-text">No Temperature Data Available </p>
-                    : <Link class="btn btn-primary mb-2" to={"/TemperatureData/" + countryId + "/" + regionData.regionId} state={{ regionData, countryData }}>View Temperature Data</Link>}
+                    : <Link class="btn btn-primary mb-2" to={"/TemperatureData/" + countryId + "/" + regionId} state={countryData }>View Temperature Data</Link>}
 
             
-                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId + "/" + regionData.regionId} state={{ regionData, countryData }}>View Cities</Link>}
+                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId + "/" + regionId} state={ countryData}>View Cities</Link>}
 
 
                 </div>

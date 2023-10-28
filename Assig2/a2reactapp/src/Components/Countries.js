@@ -8,9 +8,8 @@ const Countries = ({ }) => {
     const [countriesData, updateCountriesData] = useState({})
     const [searchText, updateQuery] = useState('')
     const [isLoading, setIsLoading] = useState(true);
+    const regionId = parseInt(params.regionId, 10)
 
-    const location = useLocation();
-    const regionData = location.state;
 
     useEffect(() => {
         setIsLoading(true);
@@ -51,17 +50,18 @@ const Countries = ({ }) => {
                             <div className="overlay-content">
                                 {countriesData.countryList &&
                                     <>
-                                        {params.regionId !== 0
+                                    {console.log('params.regionId:', params.regionId)}
+                                    {regionId !== 0
                                             ?
                                                 <>
-                                                    <h2> Countries in {countriesData.theRegionregionName}  </h2>
+                                                    <h2> Countries in {countriesData.theRegion.regionName}  </h2>
                                                     <img src={countriesData.theRegion.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countriesData.theRegion.regionName} />
-                                                    <p>Number of Countries: {countriesData.theRegion.countryCount}</p>
+                                                    <p>Number of Countries: {countriesData.theRegion.countryCount} </p>
                                                 </>
                                             :
                                                 <>
                                                     <h2> All Countries</h2>
-                                                    <p>Number of Countries: {countriesData.countryList.length}</p>
+                                                    <p>Number of Countries: {countriesData.countryList.length} </p>
                                                 </>
                                         }
 
@@ -76,16 +76,16 @@ const Countries = ({ }) => {
                             </div>
                         </div>
 
-                        {regionData.countryCount > 1 &&
-                            <form class="row g-3" method='post' onSubmit={onSubmit}>
-                                <div class="col-auto">
-                                    <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />
-                                </div>
-                                <div class="col-auto">
-                                    <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
-                                </div>
-                            </form>
-                        }
+                        {/*{regionData.countryCount > 1 &&*/}
+                        {/*    <form class="row g-3" method='post' onSubmit={onSubmit}>*/}
+                        {/*        <div class="col-auto">*/}
+                        {/*            <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />*/}
+                        {/*        </div>*/}
+                        {/*        <div class="col-auto">*/}
+                        {/*            <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>*/}
+                        {/*        </div>*/}
+                        {/*    </form>*/}
+                        {/*}*/}
 
                         {countriesData.countryList && (
                             <>
@@ -99,7 +99,7 @@ const Countries = ({ }) => {
                                         emissionDataYearRange={country.emissionDataYearRange}
                                         temperatureDataYearRange={country.temperatureDataYearRange}
                                         countryId={country.countryId}
-                                        regionData={regionData}
+                                        regionId={params.regionId}
                                     />
                                 ))}
                                 )
