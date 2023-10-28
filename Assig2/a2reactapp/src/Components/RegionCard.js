@@ -4,7 +4,7 @@ import '../site.css';
 
 const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
 
-    const regionData = { regionId, regionName, imageUrl, countryCount }
+    //const regionData = { regionId, regionName, imageUrl, countryCount }
 
     return (
         <div className="col-lg-4 mt-5">
@@ -13,7 +13,7 @@ const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
                 <div className="card-body d-flex flex-column align-items-center">
                     <h3 className="card-title text-center">{regionName}</h3>
                     <p className="card-text">Number of Countries: {countryCount}</p>
-                    <Link className="stretched-link" to={"/Countries/" + regionId} state={regionData} />
+                    <Link className="stretched-link" to={"/Countries/" + regionId}  />
                 </div>
             </div>
         </div>

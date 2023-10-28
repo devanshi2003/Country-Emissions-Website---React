@@ -51,17 +51,19 @@ const Countries = ({ }) => {
                             <div className="overlay-content">
                                 {countriesData.countryList &&
                                     <>
-                                        {regionData.regionId !== 0
+                                        {params.regionId !== 0
                                             ?
-                                            <>
-                                                <h2> Countries in {regionData.regionName}  </h2>
-                                                <img src={regionData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + regionData.regionName} />
-                                            </>
-
-                                            : <h2> All Countries </h2>
-
+                                                <>
+                                                    <h2> Countries in {countriesData.theRegionregionName}  </h2>
+                                                    <img src={countriesData.theRegion.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countriesData.theRegion.regionName} />
+                                                    <p>Number of Countries: {countriesData.theRegion.countryCount}</p>
+                                                </>
+                                            :
+                                                <>
+                                                    <h2> All Countries</h2>
+                                                    <p>Number of Countries: {countriesData.countryList.length}</p>
+                                                </>
                                         }
-                                        <p>Number of Countries: {regionData.countryCount}</p>
 
                                     </>
                                 }
