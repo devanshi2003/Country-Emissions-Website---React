@@ -36,9 +36,8 @@ const TemperatureData = ({ }) => {
                 <div class="full-width-section full-width-section-countries">
                     <div className="overlay-content">
                         <h2>
-                            Temperature Data
+                            Temperature Data for {countryData.countryName}
                         </h2>
-                        <h4>Country: {countryData.countryName}</h4>
                         {regionData.regionId !== 0 && <h5>Region: {regionData.regionName}</h5>}
                         <img src={countryData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
                     </div>
@@ -48,7 +47,7 @@ const TemperatureData = ({ }) => {
             <p> Latest Year: {temperatureData.maxYear}</p>
 
             <table className="table">
-                <thead>
+                <thead className ="table-info">
                     <tr>
                         <th scope="col">Year</th>
                         <th scope="col">Value</th>
@@ -74,9 +73,9 @@ const TemperatureData = ({ }) => {
                                     <td>{data.theCountryTempData.value}</td>
                                     {data.regionalMin &&
                                         <>
-                                        <td>Min:{data.regionalMin}</td>
-                                        <td>Max:{data.regionalMax}</td>
-                                        <td>Avg:{data.regionalAvg}</td>
+                                        <td>{data.regionalMin.toFixed(2)}</td>
+                                        <td>{data.regionalMax.toFixed(2)}</td>
+                                        <td>{data.regionalAvg.toFixed(2)}</td>
                                         </>
                                     }
                                              
