@@ -54,15 +54,11 @@ const CountryEmission = ({ }) => {
     return (
         <div>
 
-            <div className="card col-4 mb-2" style={{ width: '18rem' }}>
-                <h5 className="card-title">Country Emission Data Page </h5>
-            </div>
-
             <div className="row">
                 <div class="full-width-section full-width-section-countries">
                     <div className="overlay-content">
                         <h2>
-                            Emissions and Temperature Data
+                            Emissions Data
                         </h2>
                         <h4>Country: {countryData.countryName}</h4>
                         {regionData.regionId !== 0 && <h5>Region: {regionData.regionName}</h5>}

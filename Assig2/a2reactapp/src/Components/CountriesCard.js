@@ -24,10 +24,10 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
 
                 {temperatureDataYearRange[0] === 0
                     ? <p className="card-text">No Temperature Data Available </p>
-                    : <Link class="btn btn-primary mb-2" to={"/TemperatureData/" + countryId + "/" + regionId} state={regionData,countryData}>View Temperature Data</Link>}
+                    : <Link class="btn btn-primary mb-2" to={"/TemperatureData/" + countryId + "/" + regionId} state={{ regionData, countryData }}>View Temperature Data</Link>}
 
             
-                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId + "/" + regionId} state={regionData, countryData}>View Cities</Link>}
+                {cityCount !== 0 && <Link class="btn btn-primary" to={"/Cities/" + countryId + "/" + regionId} state={{ regionData, countryData }}>View Cities</Link>}
 
 
                 </div>
