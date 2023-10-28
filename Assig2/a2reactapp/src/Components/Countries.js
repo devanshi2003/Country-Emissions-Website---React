@@ -8,8 +8,7 @@ const Countries = ({ }) => {
     const [countriesData, updateCountriesData] = useState({})
     const [searchText, updateQuery] = useState('')
     const [isLoading, setIsLoading] = useState(true);
-    const regionId = parseInt(params.regionId, 10)
-
+    const regionId = parseInt(params.regionId, 10);
 
     useEffect(() => {
         setIsLoading(true);
@@ -24,7 +23,7 @@ const Countries = ({ }) => {
                 setIsLoading(false);
             });
 
-    }, [searchText])
+    }, [params.regionId, searchText])
 
     function searchCountry() {
         const searchText = document.querySelector('[name = "searchText"]').value;
@@ -76,7 +75,8 @@ const Countries = ({ }) => {
                             </div>
                         </div>
 
-                        {countriesData.theRegion.countryCount > 1 || countriesData.countryList.length > 1 &&
+
+                        {(countriesData.theRegion.countryCount > 1 || countriesData.countryList.length > 1)  && (
                             <form class="row g-3" method='post' onSubmit={onSubmit}>
                                 <div class="col-auto">
                                     <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />
@@ -85,7 +85,7 @@ const Countries = ({ }) => {
                                     <button type="submit" value={searchCountry} class="btn btn-primary mb-3">Search</button>
                                 </div>
                             </form>
-                        }
+                        )}
 
                         {countriesData.countryList && (
                             <>                 
