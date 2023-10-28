@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation} from "react-router-dom";
 
 const AirQualityData = ({ }) => {
 
     const params = useParams();
     const [airQualityData, updateAirQualityData] = useState({});
+    const location = useLocation();
+    const { regionData, countryData } = location.state;
+    console.log(location.state);
 
     useEffect(() => {
         fetch(`http://localhost:5256/api/C_Cities/GetAirQualityData/${params.cityID}`)
@@ -17,8 +20,18 @@ const AirQualityData = ({ }) => {
 
     return (
         <div>
-            <div className="card col-4 mb-2" style={{ width: '18rem' }}>
-                <h5 className="card-title">Air Quality Data Page {params.cityID} {params.countryId}</h5>
+            <div className="row">
+                <div class="full-width-section full-width-section-countries">
+                    <div className="overlay-content">
+                        {airQualityData.theCityDetail && 
+                            <h2>
+                                Air Quality Data for {airQualityData.theCityDetail.cityName}
+                            </h2>
+                            }
+                        <h4>Country: {countryData.countryName}</h4>
+                        {regionData.regionId !== 0 && <h5>Region: {regionData.regionName}</h5>}
+                    </div>
+                </div>
             </div>
 
             <div className="position-relative pt-5">

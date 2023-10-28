@@ -75,13 +75,16 @@ const Cities = ({ }) => {
             {cities.length > 0
                 ? (
                 <div className="row mt-5">
-                    {cities.map((city) => (
-                        <CitiesCard
-                            key={city.cityID}
-                            cityName={city.cityName}
-                            recordCount={city.recordCount}
-                            airQualityYearRange={city.airQualityYearRange}
-                            cityId={city.cityID}
+                        {cities.map((city) => (
+                            <CitiesCard
+                                key={city.cityID}
+                                cityName={city.cityName}
+                                recordCount={city.recordCount}
+                                airQualityYearRange={city.airQualityYearRange}
+                                cityId={city.cityID}
+                                regionData={regionData}
+                                countryData={countryData}
+
                         />
                     ))
                     }
