@@ -36,7 +36,7 @@ const AirQualityData = ({ }) => {
 
             <div className="position-relative pt-5">
                 <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className="btn btn-primary" to={"/Cities/" + params.countryId + "/" + params.regionId}>Back to Cities </Link>
+                    <Link className="btn btn-primary" to={"/Cities/" + params.countryId + "/" + params.regionId} state={{ regionData, countryData }}>Back to Cities </Link>
                 </div>
             </div>
 
