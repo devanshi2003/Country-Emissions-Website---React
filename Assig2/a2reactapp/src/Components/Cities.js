@@ -44,7 +44,7 @@ const Cities = ({ }) => {
         <div>
             <div class="position-relative pt-5">
                 <div class="position-absolute top-50 start-0 translate-middle">
-                    <Link class="btn btn-primary" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
+                    <Link class="btn btn-dark btn-back" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
                 </div>
             </div>
 

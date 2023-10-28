@@ -54,6 +54,12 @@ const CountryEmission = ({ }) => {
     return (
         <div>
 
+            <div className="position-relative pt-5">
+                <div className="position-absolute top-50 start-0 translate-middle">
+                    <Link className="btn btn-dark btn-back" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
+                </div>
+            </div>
+
             <div className="row">
                 <div class="full-width-section full-width-section-countries">
                     <div className="overlay-content">
@@ -70,11 +76,7 @@ const CountryEmission = ({ }) => {
             </div>
 
                           
-            <div className="position-relative pt-5">
-                <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className="btn btn-primary" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
-                </div>
-            </div>
+
 
             <select className="form-select" style={{ width: '300px' }} value={selectedElement} onChange={elementChanged} name="selectedElement">
                 <option selected>Choose an element</option>

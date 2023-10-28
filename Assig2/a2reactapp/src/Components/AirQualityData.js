@@ -20,6 +20,12 @@ const AirQualityData = ({ }) => {
 
     return (
         <div>
+            <div className="position-relative pt-5">
+                <div className="position-absolute top-50 start-0 translate-middle">
+                    <Link className="btn btn-dark btn-back" to={"/Cities/" + params.countryId + "/" + params.regionId} state={{ regionData, countryData }}>Back to Cities </Link>
+                </div>
+            </div>
+
             <div className="row">
                 <div class="full-width-section full-width-section-countries">
                     <div className="overlay-content">
@@ -34,11 +40,7 @@ const AirQualityData = ({ }) => {
                 </div>
             </div>
 
-            <div className="position-relative pt-5">
-                <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className="btn btn-primary" to={"/Cities/" + params.countryId + "/" + params.regionId} state={{ regionData, countryData }}>Back to Cities </Link>
-                </div>
-            </div>
+
 
             <table className="table">
                 <thead>
