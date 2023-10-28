@@ -7,7 +7,7 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
 
 
     return (
-        <div className="card" style={{ width: '18rem' }}>
+        <div className="card mt-3 ms-3" style={{ width: '18rem' }}>
             <div className="card-body">
                 <img src={imageUrl} className="card-img-top" alt={"Image of " + countryName} />
                 <h5 className="card-title">{countryName}</h5>

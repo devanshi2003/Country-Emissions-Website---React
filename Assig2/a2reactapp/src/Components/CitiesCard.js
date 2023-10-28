@@ -5,7 +5,7 @@ const CitiesCard = ({ cityName, recordCount, airQualityYearRange, cityId, region
     const params = useParams();
 
     return (
-        <div className="card" style={{ width: '18rem' }}>
+        <div className="card mb-3 ms-3" style={{ width: '18rem' }}>
                 <div className="card-body">
                 <h5 className="card-title">{cityName}</h5>
 
