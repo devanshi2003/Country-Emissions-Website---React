@@ -22,19 +22,25 @@ const Region = ({ }) => {
                 </div>
             </div>
 
-            <div className="row">
-                {regionsData.map((obj) => (
-                    <RegionCard
-                        key={obj.regionId}
-                        regionId={obj.regionId}
-                        regionName={obj.regionName}
-                        imageUrl={obj.imageUrl}
-                        countryCount={obj.countryCount}
-                    />
-                )
-                )
-                }
-            </div>
+            {regionsData.length > 0
+
+                ? <div className="row">
+                    {regionsData.map((obj) => (
+                        <RegionCard
+                            key={obj.regionId}
+                            regionId={obj.regionId}
+                            regionName={obj.regionName}
+                            imageUrl={obj.imageUrl}
+                            countryCount={obj.countryCount}
+                        />
+                    )
+                    )
+                    }
+                </div>
+
+                : <p>Loading Data...</p>
+            }
+
         </div>
         
     )
