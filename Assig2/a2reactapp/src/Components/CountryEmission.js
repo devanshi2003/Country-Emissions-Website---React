@@ -11,6 +11,8 @@ const CountryEmission = ({ }) => {
     const location = useLocation();
     const { regionData, countryData }  = location.state;
     console.log(location.state);
+    const groupedData = {}
+
 
 
     useEffect(() => {
@@ -112,28 +114,41 @@ const CountryEmission = ({ }) => {
 
             {selectedElement !== 0 && selectedElement !== 'Select an element' && (
             
-                <table className="table table-hover">
-                    <thead className="table-secondary">
-                        <tr>
-                            <th scope="col">Year</th>
-                            <th scope="col">Item Name</th>
-                            <th scope="col">Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            countryEmission ? countryEmission.map((data) => (
-                                <tr>
-                                    <td>{data.year}</td>
-                                    <td>{data.itemName}</td>
-                                    <td>{data.value.toFixed(2)}</td>
-                                </tr>
-                            ))
-                                : <p>No data to show</p>
-                        }
+                <div>
 
-                    </tbody>
-                </table>
+                    
+
+                    {countryEmission.forEach((data) => {
+                      if (!groupedData[data.year]) {
+                           groupedData[data.year] = [];
+                      }
+                                        groupedData[data.year].push(data);
+                    })}
+
+                    {
+                        Object.keys(groupedData).map((year) => (
+                            <div key={year}>
+                                <h5 className="bg-warning">{year}</h5>
+                                <table className="table">
+                                    <thead className="table-secondary">
+                                        <tr>
+                                            <th>Item Name</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {groupedData[year].map((data) => (
+                                            <tr key={data.year}>
+                                                <td>{data.itemName}</td>
+                                                <td>{data.value.toFixed(2)}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ))
+                    }                 
+                </div>
             )
             }
         </div>
