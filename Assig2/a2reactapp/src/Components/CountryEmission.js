@@ -61,26 +61,22 @@ const CountryEmission = ({ }) => {
             </div>
 
             <div className="row">
-                <div class="full-width-section full-width-section-countries">
+                <div className="full-width-section full-width-section-countries">
                     <div className="overlay-content">
                         <h2>
-                            Emissions Data
+                            Emission Data for {countryData.countryName}
                         </h2>
-                        <h4>Country: {countryData.countryName}</h4>
                         {regionData.regionId !== 0 && <h5>Region: {regionData.regionName}</h5>}
-                        <img src={countryData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
-                        
-
+                        <img src={countryData.imageUrl} className="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />                      
                     </div>
                 </div>
             </div>
 
                           
-            {/*<p>Selected Value: {selectedElement}</p>*/}
-
             {summaryCountryEmissions.length > 0 ? (
-                <>       
-                    <table className="table mt-5 table-hover">
+                <>
+                    <h5 className="mt-5 text-start">Emission Summary</h5>
+                    <table className="table mt-3 table-hover">
                         <thead className="table-info">
                             <tr>
                                 <th scope="col">Element</th>
@@ -103,16 +99,19 @@ const CountryEmission = ({ }) => {
             : <p> No Data to Show!</p>
             }
 
-            <h5 className="mt-5">Select Element to View Item Data</h5>
-            <select className="form-select mt-3" style={{ width: '300px', margin: '0 auto' }} value={selectedElement} onChange={elementChanged} name="selectedElement">
-                <option className="text-center"selected>Select an element</option>
-                {elementData.map((element) => (
-                    <option value={element.elementId}>{element.elementName}</option>
-                ))}
-            </select>
+            <h5 className="mt-5 text-start">Select Element to View Item Data</h5>
+            <div className="text-start">
+                <select className="form-select mt-3" style={{ width: '300px'}} value={selectedElement} onChange={elementChanged} name="selectedElement">
+                    <option selected>Select an element</option>
+                    {elementData.map((element) => (
+                        <option value={element.elementId}>{element.elementName}</option>
+                    ))}
+                </select>
+            </div>
+
 
             {selectedElement !== 0 && selectedElement !== 'Select an element' && (
-
+            
                 <table className="table table-hover">
                     <thead className="table-secondary">
                         <tr>
