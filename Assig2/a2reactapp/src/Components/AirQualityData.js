@@ -42,16 +42,23 @@ const AirQualityData = ({ }) => {
 
 
 
-            <table className="table">
-                <thead>
+            <table className="table mt-5">
+                <thead className="table-info">
                     <tr>
                         <th scope="col">Year</th>
                         <th scope="col">PM10 Avg</th>
                         <th scope="col">PM10 Min</th>
                         <th scope="col">PM10 Max</th>
-                        <th scope="col">PM25 Avg</th>
-                        <th scope="col">PM25 Min</th>
-                        <th scope="col">PM25 Max</th>
+                        <th scope="col">PM10 Annual Mean</th>
+                        <th scope="col">PM2.5 Avg</th>
+                        <th scope="col">PM2.5 Min</th>
+                        <th scope="col">PM2.5 Max</th>
+                        <th scope="col">PM2.5 Annual Mean</th>
+                        <th scope="col">Temporal Coverage</th>
+                        <th scope="col">Reference</th>
+                        <th scope="col">Stations</th>
+
+
                     </tr>
                 </thead>
                 <tbody>
@@ -59,21 +66,33 @@ const AirQualityData = ({ }) => {
                     {airQualityData.theCityAirQualityData
                         ? (
                             airQualityData.theCityAirQualityData.map((data) => (
-                                <tr>
+                                <tr key={data.theAirQualityData.aqdId}>
                                     <td>{data.year}</td>
-                                    <td>{data.countryPM10Avg} </td>
-                                    <td>{data.countryPM10Min} </td>
-                                    <td>{data.countryPM10Max} </td>
-                                    <td>{data.countryPM25Avg}</td>
-                                    <td>{data.countryPM25Min}</td>
-                                    <td>{data.countryPM25Max}</td>
-                                </tr>
+                                    <td>{data.countryPM10Avg.toFixed(2)} </td>
+                                    <td>{data.countryPM10Min.toFixed(2)} </td>
+                                    <td>{data.countryPM10Max.toFixed(2)} </td>
+                                    <td>{data.theAirQualityData.annualMean.toFixed(2)}</td>
+                                    <td>{data.countryPM25Avg.toFixed(2)}</td>
+                                    <td>{data.countryPM25Min.toFixed(2)}</td>
+                                    <td>{data.countryPM25Max.toFixed(2)}</td>
+                                    <td>{data.theAirQualityData.annualMeanPm25}</td>
+                                    <td>{data.theAirQualityData.temporalCoverage2}</td>
+                                    <td>{data.theAirQualityData.reference}</td>
+                                    <td>
+                                        {data.dataStationDetail.map((station) => (
+                                            <p>{station.stationType}</p>
+                                        ))}
+                                    </td>
+
+                                                            
+                                </tr>                                                                        
                             ))
                         )
                         : <p>Loading data...</p>
                     }         
                 </tbody>
             </table>
+
         </div>
 
     )
