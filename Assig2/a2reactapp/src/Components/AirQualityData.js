@@ -72,7 +72,7 @@ const AirQualityData = ({ }) => {
                         ? (
                             airQualityData.theCityAirQualityData.map((data) => (
                                 <tr key={data.theAirQualityData.aqdId}>
-                                    <td>{data.year}</td>
+                                    <td className="table-warning">{data.year}</td>
                                     <td>{data.countryPM10Avg.toFixed(2)}</td>
                                     <td>{data.countryPM10Min.toFixed(2)}</td>
                                     <td>{data.countryPM10Max.toFixed(2)}</td>
