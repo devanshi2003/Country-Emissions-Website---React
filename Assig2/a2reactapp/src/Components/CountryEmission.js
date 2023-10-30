@@ -114,15 +114,12 @@ const CountryEmission = ({ }) => {
 
             {selectedElement !== 0 && selectedElement !== 'Select an element' && (
             
-                <div>
-
-                    
-
+                <div>               
                     {countryEmission.forEach((data) => {
                       if (!groupedData[data.year]) {
                            groupedData[data.year] = [];
                       }
-                                        groupedData[data.year].push(data);
+                       groupedData[data.year].push(data);
                     })}
 
                     {

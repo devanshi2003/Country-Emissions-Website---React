@@ -21,10 +21,10 @@ root.render(
             <Route path="/" element={<App />}>
                 <Route path="Region" element={<Region />} />
                 <Route path="Countries/:regionId" element={<Countries />} />
-                <Route path="Cities/:countryId/:regionId" element={<Cities />} />
-                <Route path="TemperatureData/:countryId/:regionId" element={<TemperatureData/>} />
-                <Route path="CountryEmission/:countryId/:regionId" element={<CountryEmission />} />
-                <Route path="AirQualityData/:cityID/:countryId/:regionId" element={<AirQualityData />} />
+                <Route path="Cities/:regionId/:countryId" element={<Cities />} />
+                <Route path="TemperatureData/:regionId/:countryId" element={<TemperatureData/>} />
+                <Route path="CountryEmission/:regionId/:countryId" element={<CountryEmission />} />
+                <Route path="AirQualityData/:regionId/:countryId/:cityID" element={<AirQualityData />} />
 
             </Route>
         </Routes>

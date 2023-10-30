@@ -13,7 +13,7 @@ const CitiesCard = ({ cityName, recordCount, airQualityYearRange, cityId, region
                     ? <p className="card-text">No Air Quality Data {recordCount}</p>
                     : <div>
                         <p className="card-text">Total Air Quality Records: {recordCount}</p>
-                        <Link class="btn btn-dark text-center mb-2" to={"/AirQualityData/" + cityId + "/" + params.countryId + "/" + params.regionId} state={{ regionData, countryData }}>View Air Quality Data</Link>
+                        <Link class="btn btn-dark text-center mb-2" to={"/AirQualityData/" + params.regionId + "/" + params.countryId + "/" + params.cityId} state={{ regionData, countryData }}>View Air Quality Data</Link>
                        </div>
                 }
                 
