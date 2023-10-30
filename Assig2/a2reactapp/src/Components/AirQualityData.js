@@ -36,6 +36,7 @@ const AirQualityData = ({ }) => {
                             }
                         <h4>Country: {countryData.countryName}</h4>
                         {regionData.regionId !== 0 && <h5>Region: {regionData.regionName}</h5>}
+                        {airQualityData.theCityDetail && <h5>Iso3:{airQualityData.theCityDetail.iso3}</h5>}
                     </div>
                 </div>
             </div>
@@ -50,15 +51,15 @@ const AirQualityData = ({ }) => {
                         <th scope="col">PM10 Min</th>
                         <th scope="col">PM10 Max</th>
                         <th scope="col">PM10 Annual Mean</th>
+                        <th scope="col">Note on converted PM10</th>
+                        <th scope="col">Temporal Coverage Pm10</th>
                         <th scope="col">PM2.5 Avg</th>
                         <th scope="col">PM2.5 Min</th>
                         <th scope="col">PM2.5 Max</th>
                         <th scope="col">PM2.5 Annual Mean</th>
-                        <th scope="col">Temporal Coverage</th>
+                        <th scope="col">Temporal Coverage Pm2.5</th>
                         <th scope="col">Reference</th>
                         <th scope="col">Stations</th>
-
-
                     </tr>
                 </thead>
                 <tbody>
@@ -72,10 +73,12 @@ const AirQualityData = ({ }) => {
                                     <td>{data.countryPM10Min.toFixed(2)} </td>
                                     <td>{data.countryPM10Max.toFixed(2)} </td>
                                     <td>{data.theAirQualityData.annualMean.toFixed(2)}</td>
+                                    <td>{data.theAirQualityData.annualMeanPm10}</td>
+                                    <td>{data.theAirQualityData.temporalCoverage1}</td>
                                     <td>{data.countryPM25Avg.toFixed(2)}</td>
                                     <td>{data.countryPM25Min.toFixed(2)}</td>
                                     <td>{data.countryPM25Max.toFixed(2)}</td>
-                                    <td>{data.theAirQualityData.annualMeanPm25}</td>
+                                    <td>{data.theAirQualityData.annualMeanUgm3} {data.theAirQualityData.annualMeanPm25 && <p>({data.theAirQualityData.annualMeanPm25})</p>}</td>
                                     <td>{data.theAirQualityData.temporalCoverage2}</td>
                                     <td>{data.theAirQualityData.reference}</td>
                                     <td>
