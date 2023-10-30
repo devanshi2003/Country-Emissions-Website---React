@@ -11,7 +11,8 @@ const CountryEmission = ({ }) => {
     const location = useLocation();
     const { regionData, countryData }  = location.state;
     console.log(location.state);
-    const groupedData = {}
+    const groupedElementData = {}
+    const groupedSummaryData = {}
 
 
 
@@ -77,25 +78,35 @@ const CountryEmission = ({ }) => {
                           
             {summaryCountryEmissions.length > 0 ? (
                 <>
-                    <h5 className="mt-5 text-start">Emission Summary</h5>
-                    <table className="table mt-3 table-hover">
-                        <thead className="table-info">
-                            <tr>
-                                <th scope="col">Element</th>
-                                <th scope="col">Year</th>
-                                <th scope="col">Total Emission</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {summaryCountryEmissions.map((data) => (
-                                <tr>
-                                    <td>{data.element}</td>
-                                    <td>{data.year}</td>
-                                    <td>{data.totalValue.toFixed(2)}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                        {summaryCountryEmissions.forEach((data) => {
+                            if (!groupedSummaryData[data.year]) {
+                                groupedSummaryData[data.year] = [];
+                            }
+                            groupedSummaryData[data.year].push(data);
+                        })}
+
+                    {Object.keys(groupedSummaryData).map((year) => (
+                        <div key={year}>
+                            {/*<h5 className="mt-5 text-start">Emission Summary</h5>*/}
+                            <h6 className="mt-5 text-start"> Emission Summary for {year}</h6>
+                            <table className="table mt-3 table-hover">
+                                <thead className="table-info">
+                                    <tr>
+                                        <th scope="col">Element</th>
+                                        <th scope="col">Total Emission</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {groupedSummaryData[year].map((data) => (
+                                        <tr>
+                                            <td>{data.element}</td>
+                                            <td>{data.totalValue.toFixed(2)}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                        ))}
                 </>
             )
             : <p> No Data to Show!</p>
@@ -116,14 +127,15 @@ const CountryEmission = ({ }) => {
             
                 <div>               
                     {countryEmission.forEach((data) => {
-                      if (!groupedData[data.year]) {
-                           groupedData[data.year] = [];
+                      if (!groupedElementData[data.year]) {
+                           groupedElementData[data.year] = [];
                       }
-                       groupedData[data.year].push(data);
+                       groupedElementData[data.year].push(data);
                     })}
 
                     {
-                        Object.keys(groupedData).map((year) => (
+                        // Grouping concept learnt from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy
+                        Object.keys(groupedElementData).map((year) => (
                             <div key={year}>
                                 <h5 className="bg-warning">{year}</h5>
                                 <table className="table">
@@ -134,7 +146,7 @@ const CountryEmission = ({ }) => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {groupedData[year].map((data) => (
+                                        {groupedElementData[year].map((data) => (
                                             <tr key={data.year}>
                                                 <td>{data.itemName}</td>
                                                 <td>{data.value.toFixed(2)}</td>
