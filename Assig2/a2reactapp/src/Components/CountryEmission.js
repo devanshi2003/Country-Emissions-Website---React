@@ -87,12 +87,13 @@ const CountryEmission = ({ }) => {
                         })}
 
                     <div className="row">
-                        {Object.keys(groupedSummaryData).map((year) => (
+                        {// Grouping concept learnt from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy                       
+                            Object.keys(groupedSummaryData).map((year) => (
                             <div className="col" key={year}>
                                 <div className="d-flex flex-column align-items-center"> 
                                     <h6 className="mt-5"> Emission Summary for {year}</h6>
-                                    <table className="table mt-3 table-hover" style={{ width: '400px' }}>
-                                        <thead className="table-info">
+                                        <table className="table mt-3 table-hover table-bordered border border-secondary" style={{ width: '400px' }}>
+                                        <thead className="bg-info">
                                             <tr>
                                                 <th scope="col" className="col-3">Element</th>
                                                 <th scope="col" className="col-3">Total Emission</th>
@@ -137,30 +138,33 @@ const CountryEmission = ({ }) => {
                        groupedElementData[data.year].push(data);
                     })}
 
-                    {
-                        // Grouping concept learnt from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy                       
-                        Object.keys(groupedElementData).map((year) => (
-                            <div key={year}>
+
+                    <div class="row mt-4">
+                        {Object.keys(groupedElementData).map((year) => (
+                            <div className="col" key={year}>
+                                <div className="d-flex flex-column align-items-center"> 
                                 <h5 className="bg-warning" style={{ width: '400px' }}>{year}</h5>
-                                <table className="table" style={{ width: '400px' }}>
+                                <table className="table table-hover table-bordered border border-secondary" style={{ width: '400px' }}>
                                     <thead className="table-secondary">
                                         <tr>
-                                            <th>Item Name</th>
-                                            <th>Value</th>
+                                            <th className="text-start">Item Name</th>
+                                            <th className="text-start">Value</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {groupedElementData[year].map((data) => (
                                             <tr key={data.year}>
-                                                <td>{data.itemName}</td>
-                                                <td>{data.value.toFixed(2)}</td>
+                                                <td className="text-start">{data.itemName}</td>
+                                                <td className="text-start">{data.value.toFixed(2)}</td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         ))
-                    }                 
+                        } 
+                        </div>
                 </div>
             )
             }
