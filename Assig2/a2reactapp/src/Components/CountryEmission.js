@@ -8,9 +8,10 @@ const CountryEmission = ({ }) => {
     const [elementData, updateElementData] = useState([]);
     const [selectedElement, updateSelectedElement] = useState(0);
     const [countryEmission, updateCountryEmission] = useState([]);
+
     const location = useLocation();
-    const { regionData, countryData }  = location.state;
-    console.log(location.state);
+    const { regionData, countryData } = location.state;
+
     const groupedElementData = {}
     const groupedSummaryData = {}
 
@@ -89,11 +90,11 @@ const CountryEmission = ({ }) => {
                         <div key={year}>
                             {/*<h5 className="mt-5 text-start">Emission Summary</h5>*/}
                             <h6 className="mt-5 text-start"> Emission Summary for {year}</h6>
-                            <table className="table mt-3 table-hover">
+                            <table className="table mt-3 table-hover" style={{ width: '400px' }}>
                                 <thead className="table-info">
                                     <tr>
-                                        <th scope="col">Element</th>
-                                        <th scope="col">Total Emission</th>
+                                        <th scope="col" className="col-3">Element</th>
+                                        <th scope="col" className="col-3">Total Emission</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -114,10 +115,10 @@ const CountryEmission = ({ }) => {
 
             <h5 className="mt-5 text-start">Select Element to View Item Data</h5>
             <div className="text-start">
-                <select className="form-select mt-3" style={{ width: '300px'}} value={selectedElement} onChange={elementChanged} name="selectedElement">
+                <select className="form-select mt-3" style={{ width: '400px'}} value={selectedElement} onChange={elementChanged} name="selectedElement">
                     <option selected>Select an element</option>
                     {elementData.map((element) => (
-                        <option value={element.elementId}>{element.elementName}</option>
+                        <option value={element.elementId}>{element.elementName} (measured in {element.unit}) </option>
                     ))}
                 </select>
             </div>
@@ -137,8 +138,8 @@ const CountryEmission = ({ }) => {
                         // Grouping concept learnt from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy
                         Object.keys(groupedElementData).map((year) => (
                             <div key={year}>
-                                <h5 className="bg-warning">{year}</h5>
-                                <table className="table">
+                                <h5 className="bg-warning" style={{ width: '400px' }}>{year}</h5>
+                                <table className="table" style={{ width: '400px' }}>
                                     <thead className="table-secondary">
                                         <tr>
                                             <th>Item Name</th>
