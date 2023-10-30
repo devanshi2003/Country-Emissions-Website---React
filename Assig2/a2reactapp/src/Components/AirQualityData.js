@@ -46,55 +46,56 @@ const AirQualityData = ({ }) => {
             <table className="table mt-5">
                 <thead className="table-info">
                     <tr>
-                        <th scope="col">Year</th>
-                        <th scope="col">PM10 Avg</th>
-                        <th scope="col">PM10 Min</th>
-                        <th scope="col">PM10 Max</th>
-                        <th scope="col">PM10 Annual Mean</th>
-                        <th scope="col">Note on converted PM10</th>
-                        <th scope="col">Temporal Coverage Pm10</th>
-                        <th scope="col">PM2.5 Avg</th>
-                        <th scope="col">PM2.5 Min</th>
-                        <th scope="col">PM2.5 Max</th>
-                        <th scope="col">PM2.5 Annual Mean</th>
-                        <th scope="col">Temporal Coverage Pm2.5</th>
-                        <th scope="col">Reference</th>
-                        <th scope="col">Stations</th>
+                        <th className="table-secondary" scope="col">Year</th>
+                        <th className="bg-info" colSpan="5">PM10 Data</th>
+                        <th colSpan="4">PM2.5 Data</th>
+                        <th className="table-secondary" scope="col">Reference</th>
+                        <th className="table-secondary" scope="col">Stations</th>
+                    </tr>
+                    <tr>
+                        <th className="table-secondary" scope="col"></th>
+                        <th className="bg-info" scope="col">Avg</th>
+                        <th className="bg-info" scope="col">Min</th>
+                        <th className="bg-info" scope="col">Max</th>
+                        <th className="bg-info" scope="col">Annual Mean</th>
+                        <th className="bg-info" scope="col">Note</th>
+                        <th scope="col">Avg</th>
+                        <th scope="col">Min</th>
+                        <th scope="col">Max</th>
+                        <th scope="col">Annual Mean</th>
+                        <th className="table-secondary" scope="col"></th>
+                        <th className="table-secondary" scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-
                     {airQualityData.theCityAirQualityData
                         ? (
                             airQualityData.theCityAirQualityData.map((data) => (
                                 <tr key={data.theAirQualityData.aqdId}>
                                     <td>{data.year}</td>
-                                    <td>{data.countryPM10Avg.toFixed(2)} </td>
-                                    <td>{data.countryPM10Min.toFixed(2)} </td>
-                                    <td>{data.countryPM10Max.toFixed(2)} </td>
+                                    <td>{data.countryPM10Avg.toFixed(2)}</td>
+                                    <td>{data.countryPM10Min.toFixed(2)}</td>
+                                    <td>{data.countryPM10Max.toFixed(2)}</td>
                                     <td>{data.theAirQualityData.annualMean.toFixed(2)}</td>
                                     <td>{data.theAirQualityData.annualMeanPm10}</td>
-                                    <td>{data.theAirQualityData.temporalCoverage1}</td>
                                     <td>{data.countryPM25Avg.toFixed(2)}</td>
                                     <td>{data.countryPM25Min.toFixed(2)}</td>
                                     <td>{data.countryPM25Max.toFixed(2)}</td>
                                     <td>{data.theAirQualityData.annualMeanUgm3} {data.theAirQualityData.annualMeanPm25 && <p>({data.theAirQualityData.annualMeanPm25})</p>}</td>
-                                    <td>{data.theAirQualityData.temporalCoverage2}</td>
                                     <td>{data.theAirQualityData.reference}</td>
                                     <td>
                                         {data.dataStationDetail.map((station) => (
                                             <p>{station.stationType}</p>
                                         ))}
                                     </td>
-
-                                                            
-                                </tr>                                                                        
+                                </tr>
                             ))
                         )
                         : <p>Loading data...</p>
-                    }         
+                    }
                 </tbody>
             </table>
+
 
         </div>
 
