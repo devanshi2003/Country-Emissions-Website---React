@@ -86,28 +86,31 @@ const CountryEmission = ({ }) => {
                             groupedSummaryData[data.year].push(data);
                         })}
 
-                    {Object.keys(groupedSummaryData).map((year) => (
-                        <div key={year}>
-                            {/*<h5 className="mt-5 text-start">Emission Summary</h5>*/}
-                            <h6 className="mt-5 text-start"> Emission Summary for {year}</h6>
-                            <table className="table mt-3 table-hover" style={{ width: '400px' }}>
-                                <thead className="table-info">
-                                    <tr>
-                                        <th scope="col" className="col-3">Element</th>
-                                        <th scope="col" className="col-3">Total Emission</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {groupedSummaryData[year].map((data) => (
-                                        <tr>
-                                            <td>{data.element}</td>
-                                            <td>{data.totalValue.toFixed(2)}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                    <div className="row">
+                        {Object.keys(groupedSummaryData).map((year) => (
+                            <div className="col" key={year}>
+                                <div className="d-flex flex-column align-items-center"> 
+                                    <h6 className="mt-5"> Emission Summary for {year}</h6>
+                                    <table className="table mt-3 table-hover" style={{ width: '400px' }}>
+                                        <thead className="table-info">
+                                            <tr>
+                                                <th scope="col" className="col-3">Element</th>
+                                                <th scope="col" className="col-3">Total Emission</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {groupedSummaryData[year].map((data) => (
+                                                <tr key={data.element}>
+                                                    <td>{data.element}</td>
+                                                    <td>{data.totalValue.toFixed(2)}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         ))}
+                    </div>
                 </>
             )
             : <p> No Data to Show!</p>
@@ -135,7 +138,7 @@ const CountryEmission = ({ }) => {
                     })}
 
                     {
-                        // Grouping concept learnt from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy
+                        // Grouping concept learnt from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy                       
                         Object.keys(groupedElementData).map((year) => (
                             <div key={year}>
                                 <h5 className="bg-warning" style={{ width: '400px' }}>{year}</h5>
