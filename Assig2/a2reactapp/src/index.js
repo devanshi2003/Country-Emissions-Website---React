@@ -25,6 +25,8 @@ root.render(
                 <Route path="TemperatureData/:regionId/:countryId" element={<TemperatureData/>} />
                 <Route path="CountryEmission/:regionId/:countryId" element={<CountryEmission />} />
                 <Route path="AirQualityData/:regionId/:countryId/:cityID" element={<AirQualityData />} />
+                <Route path="" element={<Region />} /> {/*route when the URL is localhost*/}
+                <Route path="*" element={<Region />} /> {/*route when no matches are found above*/}
 
             </Route>
         </Routes>
