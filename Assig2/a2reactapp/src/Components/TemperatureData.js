@@ -28,7 +28,7 @@ const TemperatureData = ({ }) => {
 
             <div className="position-relative pt-5">
                 <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className=" btn btn-dark btn-back" to={"/Countries/" + params.regionId} state={ regionData }>Back to Countries</Link>
+                    <Link className=" btn btn-success btn-back" to={"/Countries/" + params.regionId} state={ regionData }>Back to Countries</Link>
                 </div>
             </div>
 
@@ -43,11 +43,11 @@ const TemperatureData = ({ }) => {
                     </div>
                 </div>
             </div>
-            <p> Earliest Year: {temperatureData.minYear}</p>
-            <p> Latest Year: {temperatureData.maxYear}</p>
+            <h5 className="text-start mt-4">Earliest Data Available: {temperatureData.minYear} </h5>
+            <h5 className="text-start mb-4">Latest Data Available: {temperatureData.maxYear} </h5>
 
-            <table className="table">
-                <thead className ="table-info">
+            <table className="table table-striped">
+                <thead className ="bg-info">
                     <tr>
                         <th scope="col">Year</th>
                         <th scope="col">Value</th>
