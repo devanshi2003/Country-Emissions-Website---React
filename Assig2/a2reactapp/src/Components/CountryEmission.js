@@ -60,7 +60,7 @@ const CountryEmission = ({ }) => {
 
             <div className="position-relative pt-5">
                 <div className="position-absolute top-50 start-0 translate-middle">
-                    <Link className="btn btn-dark btn-back" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
+                    <Link className="btn btn-success btn-back" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
                 </div>
             </div>
 

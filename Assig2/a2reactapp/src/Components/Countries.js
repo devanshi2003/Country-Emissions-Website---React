@@ -44,7 +44,7 @@ const Countries = ({ }) => {
         <div>
             <div class="position-relative pt-5">
                 <div class="position-absolute top-50 start-0 translate-middle">
-                    <Link class="btn btn-dark btn-back" to={"/Region"}>Back to Regions</Link>
+                    <Link class="btn btn-success btn-back" to={"/Region"}>Back to Regions</Link>
                 </div>
             </div>
 
