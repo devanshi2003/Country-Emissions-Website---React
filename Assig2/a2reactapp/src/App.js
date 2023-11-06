@@ -1,6 +1,5 @@
 import './App.css';
 import { Link, Outlet } from "react-router-dom"
-import Region from "./Components/Region"
 
 function App() {
   return (
