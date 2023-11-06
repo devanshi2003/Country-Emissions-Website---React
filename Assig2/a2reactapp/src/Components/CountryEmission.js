@@ -37,7 +37,7 @@ const CountryEmission = ({ }) => {
     }, []);
 
     useEffect(() => {
-        if (selectedElement !== 0 && selectedElement != 'Select an element') {
+        if (selectedElement !== 0 && selectedElement !== 'Select an element') {
             fetch(`http://localhost:5256/api/B_Countries/CountryEmissionData/${params.countryId}?elementId=${selectedElement}`)
                 .then(response => response.json())
                 .then(data => {
@@ -67,11 +67,15 @@ const CountryEmission = ({ }) => {
             <div className="row">
                 <div className="full-width-section full-width-section-countries">
                     <div className="overlay-content">
+
                         <h2>
                             Emission Data for {countryData.countryName}
                         </h2>
+
                         {regionData.regionId !== 0 && <h5>Region: {regionData.regionName}</h5>}
+
                         <img src={countryData.imageUrl} className="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />                      
+
                     </div>
                 </div>
             </div>
@@ -89,9 +93,12 @@ const CountryEmission = ({ }) => {
                     <div className="row">
                         {// Grouping concept learnt from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy                       
                             Object.keys(groupedSummaryData).map((year) => (
-                            <div className="col" key={year}>
+                                <div className="col" key={year}>
+
                                 <div className="d-flex flex-column align-items-center"> 
-                                    <h6 className="mt-5"> Emission Summary for {year}</h6>
+
+                                        <h6 className="mt-5"> Emission Summary for {year}</h6>
+
                                         <table className="table mt-3 table-hover table-bordered border border-secondary" style={{ width: '400px' }}>
                                         <thead className="bg-info">
                                             <tr>
@@ -107,7 +114,8 @@ const CountryEmission = ({ }) => {
                                                 </tr>
                                             ))}
                                         </tbody>
-                                    </table>
+                                        </table>
+
                                 </div>
                             </div>
                         ))}
@@ -119,12 +127,15 @@ const CountryEmission = ({ }) => {
 
             <h5 className="mt-5 text-start">Select Element to View Item Data</h5>
             <div className="text-start">
-                <select className="form-select mt-3" style={{ width: '400px'}} value={selectedElement} onChange={elementChanged} name="selectedElement">
+
+                <select className="form-select mt-3" style={{ width: '400px' }} value={selectedElement} onChange={elementChanged} name="selectedElement">
                     <option selected>Select an element</option>
+
                     {elementData.map((element) => (
                         <option value={element.elementId}>{element.elementName} (measured in {element.unit}) </option>
                     ))}
                 </select>
+
             </div>
 
 
@@ -138,12 +149,14 @@ const CountryEmission = ({ }) => {
                        groupedElementData[data.year].push(data);
                     })}
 
-
-                    <div class="row mt-4">
+                    <div className="row mt-4">
                         {Object.keys(groupedElementData).map((year) => (
                             <div className="col" key={year}>
+
                                 <div className="d-flex flex-column align-items-center"> 
+                                
                                 <h5 className="bg-warning" style={{ width: '400px' }}>{year}</h5>
+                                
                                 <table className="table table-hover table-bordered border border-secondary" style={{ width: '400px' }}>
                                     <thead className="table-secondary">
                                         <tr>
@@ -160,10 +173,11 @@ const CountryEmission = ({ }) => {
                                         ))}
                                     </tbody>
                                 </table>
+
                                 </div>
                             </div>
-                        ))
-                        } 
+                        ))}
+                        
                         </div>
                 </div>
             )

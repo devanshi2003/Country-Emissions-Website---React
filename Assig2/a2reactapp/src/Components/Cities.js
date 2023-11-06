@@ -6,7 +6,6 @@ const Cities = ({ }) => {
 
     const [cities, updateCities] = useState([])
     const [searchText, updateQuery] = useState('')
-    //const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
 
     const location = useLocation();
@@ -37,33 +36,36 @@ const Cities = ({ }) => {
 
     return (
         <div>
-            <div class="position-relative pt-5">
-                <div class="position-absolute top-50 start-0 translate-middle">
-                    <Link class="btn btn-success btn-back" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
+            <div className="position-relative pt-5">
+                <div className="position-absolute top-50 start-0 translate-middle">
+                    <Link className="btn btn-success btn-back" to={"/Countries/" + params.regionId} state={regionData}>Back to Countries</Link>
                 </div>
             </div>
 
             <div className="row">
-                <div class="full-width-section full-width-section-cities">
+                <div className="full-width-section full-width-section-cities">
                     <div className="overlay-content">
                         <h3> Cities in {countryData.countryName} </h3>
                         {regionData.regionId !== 0 && <h5> Region Name: {regionData.regionName}</h5>}
                         <h6>Number of Cities: {countryData.cityCount}</h6>
-                        <img src={countryData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
+                        <img src={countryData.imageUrl} className="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
                     </div>
                 </div>
             </div>
 
             {countryData.cityCount > 1 &&
-                <div class="container mt-5">
-                    <form class="row g-3" method='post' onSubmit={onSubmit}>
-                        <div class="col-auto">
-                            <input type="text" class="form-control" name="searchText" placeholder="Search for City.." />
+                <div className="container mt-5">
+
+                    <form className="row g-3" method='post' onSubmit={onSubmit}>
+                        <div className="col-auto">
+                            <input type="text" className="form-control" name="searchText" placeholder="Search for City.." />
                         </div>
-                        <div class="col-auto">
-                            <button type="submit" value={searchCity} class="btn-search btn-primary btn mb-3">Search</button>
+
+                        <div className="col-auto">
+                            <button type="submit" value={searchCity} className="btn-search btn-primary btn mb-3">Search</button>
                         </div>
-                        </form>
+                    </form>
+
                 </div>
             }
 
@@ -78,18 +80,13 @@ const Cities = ({ }) => {
                                 cityId={city.cityID}
                                 regionData={regionData}
                                 countryData={countryData}
-                        />
-                    ))
-                    }
+                            />
+                        ))}
                 </div>
                 )
-
                 : <p>Loading data...</p>
-
         }
-
         </div>
-
     )
 }
 export default Cities

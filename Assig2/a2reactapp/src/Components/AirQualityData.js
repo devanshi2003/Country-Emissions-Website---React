@@ -94,11 +94,8 @@ const AirQualityData = ({ }) => {
                     }
                 </tbody>
             </table>
-
         </div>
 
     )
-
 }
-
 export default AirQualityData;

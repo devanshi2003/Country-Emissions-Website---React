@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useLocation } from 'react-router-dom'
 
 const TemperatureData = ({ }) => {
+
     const params = useParams()
     const [temperatureData, updateTemperatureData] = useState({})
     const location = useLocation();
@@ -28,16 +29,17 @@ const TemperatureData = ({ }) => {
             </div>
 
             <div className="row">
-                <div class="full-width-section full-width-section-countries">
+                <div className="full-width-section full-width-section-countries">
                     <div className="overlay-content">
                         <h2>
                             Temperature Data for {countryData.countryName}
                         </h2>
                         {regionData.regionId !== 0 && <h5>Region: {regionData.regionName}</h5>}
-                        <img src={countryData.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
+                        <img src={countryData.imageUrl} className="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countryData.countryName} />
                     </div>
                 </div>
             </div>
+
             <h5 className="text-start mt-4">Earliest Data Available: {temperatureData.minYear} </h5>
             <h5 className="text-start mb-4">Latest Data Available: {temperatureData.maxYear} </h5>
 
@@ -75,8 +77,6 @@ const TemperatureData = ({ }) => {
                                     }
                                              
                                     <td>{data.theCountryTempData.unit}</td>
-
-
                                 </tr>
                             ))
                         )
