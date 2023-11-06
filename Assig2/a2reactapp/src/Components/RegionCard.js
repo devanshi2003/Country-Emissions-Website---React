@@ -4,8 +4,6 @@ import '../site.css';
 
 const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
 
-    //const regionData = { regionId, regionName, imageUrl, countryCount }
-
     return (
         <div className="col-lg-4 mt-5">
             <div className="card border-0 region-card" >
@@ -16,8 +14,7 @@ const RegionCard = ({ regionId, regionName, imageUrl, countryCount }) => {
                     <Link className="stretched-link" to={"/Countries/" + regionId}  />
                 </div>
             </div>
-        </div>
-            
+        </div>           
     );
 };
 

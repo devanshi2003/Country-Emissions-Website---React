@@ -4,22 +4,17 @@ import { Link, useParams, useLocation } from 'react-router-dom'
 const TemperatureData = ({ }) => {
     const params = useParams()
     const [temperatureData, updateTemperatureData] = useState({})
-    const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
     const { regionData, countryData } = location.state;
-    console.log(location.state);
 
     useEffect(() => {
-        setIsLoading(true);
         fetch(`http://localhost:5256/api/B_Countries/CountryTemperatureDetail/${params.countryId}`)
             .then(response => response.json())
             .then(data => {
                 updateTemperatureData(data)
-                setIsLoading(false);
             })
             .catch(err => {
                 console.log(err)
-                setIsLoading(false);
             });
     }, [])
 
@@ -85,7 +80,7 @@ const TemperatureData = ({ }) => {
                                 </tr>
                             ))
                         )
-                        :< p > { isLoading === true ? "Loading data" : "No Data to Show!."}</p>
+                        :<p> Loading data...</p>
                     }                 
                 </tbody>
             </table>

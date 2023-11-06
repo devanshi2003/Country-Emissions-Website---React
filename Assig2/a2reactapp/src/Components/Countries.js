@@ -7,20 +7,16 @@ const Countries = ({ }) => {
     let params = useParams()
     const [countriesData, updateCountriesData] = useState({})
     const [searchText, updateQuery] = useState('')
-    const [isLoading, setIsLoading] = useState(true);
     const regionId = parseInt(params.regionId, 10);
 
     useEffect(() => {
-        setIsLoading(true);
         fetch(`http://localhost:5256/api/B_Countries/CountryList/${params.regionId}?searchText=${searchText}`)
             .then(response => response.json())
             .then((data) => {
                 updateCountriesData(data); 
-                setIsLoading(false); 
             })
             .catch(err => {
                 console.log(err)
-                setIsLoading(false);
             });
 
     }, [params.regionId, searchText])
@@ -28,7 +24,6 @@ const Countries = ({ }) => {
     function searchCountry() {
         const searchText = document.querySelector('[name = "searchText"]').value;
         updateQuery(searchText);
-        console.log(searchText)
     }
 
     function onSubmit(e) {
@@ -55,7 +50,6 @@ const Countries = ({ }) => {
                             <div className="overlay-content">
                                 {countriesData.countryList &&
                                     <>
-                                    {console.log('params.regionId:', params.regionId)}
                                     {regionId !== 0
                                             ?
                                                 <>
@@ -114,7 +108,7 @@ const Countries = ({ }) => {
                     </div>
                 </>
 
-                : <p> {isLoading === true ? "Loading data" : "No countries found for this region."}</p>
+                : <p>Loading data...</p>
             }
         </div>
 

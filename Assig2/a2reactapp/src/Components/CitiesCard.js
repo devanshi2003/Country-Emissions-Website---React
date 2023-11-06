@@ -1,6 +1,6 @@
 import {Link, useParams} from "react-router-dom"
 
-const CitiesCard = ({ cityName, recordCount, airQualityYearRange, cityId, regionData, countryData}) => {
+const CitiesCard = ({ cityName, recordCount, cityId, regionData, countryData}) => {
 
     const params = useParams();
 

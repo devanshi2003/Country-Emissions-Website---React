@@ -33,9 +33,7 @@ const Region = ({ }) => {
                             imageUrl={obj.imageUrl}
                             countryCount={obj.countryCount}
                         />
-                    )
-                    )
-                    }
+                    ))}                       
                 </div>
 
                 : <p>Loading Data...</p>

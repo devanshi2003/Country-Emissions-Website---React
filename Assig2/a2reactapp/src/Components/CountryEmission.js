@@ -114,7 +114,7 @@ const CountryEmission = ({ }) => {
                     </div>
                 </>
             )
-            : <p> No Data to Show!</p>
+            : <p>Loading Data...</p>
             }
 
             <h5 className="mt-5 text-start">Select Element to View Item Data</h5>

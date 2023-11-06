@@ -15,7 +15,7 @@ const countriesCard = ({ countryName, cityCount, imageUrl, iso3, emissionDataYea
                     ? <p className="card-text">No Cities Recorded</p>
                     : <p className="card-text">Number of Cities: {cityCount}</p>
                 }
-                {iso3 !== "" && <p className="card-text">Iso3: {iso3}</p>}
+                {iso3 && <p className="card-text">Iso3: {iso3}</p>}
                 
                 {emissionDataYearRange[0] === 0
                     ? <p className="card-text">No Country Emission Data Available </p>

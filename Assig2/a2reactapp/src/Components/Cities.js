@@ -1,30 +1,25 @@
 import { Link, useParams, useLocation} from "react-router-dom"
 import { useState, useEffect } from 'react'
 import CitiesCard from './CitiesCard'
-import Region from "./Region"
 
 const Cities = ({ }) => {
 
     const [cities, updateCities] = useState([])
     const [searchText, updateQuery] = useState('')
-    const [isLoading, setIsLoading] = useState(true);
+    //const [isLoading, setIsLoading] = useState(true);
     const params = useParams();
 
     const location = useLocation();
     const { regionData, countryData } = location.state;
-    console.log(location.state);
     
     useEffect(() => {
-        setIsLoading(true)
         fetch(`http://localhost:5256/api/C_Cities/${params.countryId}?searchText=${searchText}`)
             .then(response => response.json())
             .then((data) => {
                 updateCities(data);
-                setIsLoading(false);
             })
             .catch(err => {
                 console.log(err)
-                setIsLoading(false);
             });
     }, [searchText])
 
@@ -80,18 +75,16 @@ const Cities = ({ }) => {
                                 key={city.cityID}
                                 cityName={city.cityName}
                                 recordCount={city.recordCount}
-                                airQualityYearRange={city.airQualityYearRange}
                                 cityId={city.cityID}
                                 regionData={regionData}
                                 countryData={countryData}
-
                         />
                     ))
                     }
                 </div>
                 )
 
-                : <p>{isLoading === true ? "Loading data" : "No cities found!"}</p>
+                : <p>Loading data...</p>
 
         }
 

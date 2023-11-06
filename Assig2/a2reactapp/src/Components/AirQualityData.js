@@ -7,7 +7,6 @@ const AirQualityData = ({ }) => {
     const [airQualityData, updateAirQualityData] = useState({});
     const location = useLocation();
     const { regionData, countryData } = location.state;
-    console.log(location.state);
 
     useEffect(() => {
         fetch(`http://localhost:5256/api/C_Cities/GetAirQualityData/${params.cityID}`)
@@ -95,7 +94,6 @@ const AirQualityData = ({ }) => {
                     }
                 </tbody>
             </table>
-
 
         </div>
 
