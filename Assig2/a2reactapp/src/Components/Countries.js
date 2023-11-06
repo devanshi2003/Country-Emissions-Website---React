@@ -1,4 +1,4 @@
-import { Link, useParams, useLocation } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import CountriesCard from './CountriesCard'
 
@@ -22,8 +22,7 @@ const Countries = ({ }) => {
     }, [params.regionId, searchText])
 
     function searchCountry() {
-        const searchText = document.querySelector('[name = "searchText"]').value;
-        updateQuery(searchText);
+        updateQuery(document.querySelector('[name = "searchText"]').value);
     }
 
     function onSubmit(e) {
@@ -37,16 +36,16 @@ const Countries = ({ }) => {
     return (
 
         <div>
-            <div class="position-relative pt-5">
-                <div class="position-absolute top-50 start-0 translate-middle">
-                    <Link class="btn btn-success btn-back" to={"/Region"}>Back to Regions</Link>
+            <div className="position-relative pt-5">
+                <div className="position-absolute top-50 start-0 translate-middle">
+                    <Link className="btn btn-success btn-back" to={"/Region"}>Back to Regions</Link>
                 </div>
             </div>
 
         {countriesData.countryList ?
                 <>
                     <div className="row">
-                        <div class="full-width-section full-width-section-countries">
+                        <div className="full-width-section full-width-section-countries">
                             <div className="overlay-content">
                                 {countriesData.countryList &&
                                     <>
@@ -54,7 +53,7 @@ const Countries = ({ }) => {
                                             ?
                                                 <>
                                                     <h2> Countries in {countriesData.theRegion.regionName}  </h2>
-                                                    <img src={countriesData.theRegion.imageUrl} class="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countriesData.theRegion.regionName} />
+                                                    <img src={countriesData.theRegion.imageUrl} className="rounded-circle mx-auto d-block" width="140" height="140" alt={"Image of " + countriesData.theRegion.regionName} />
                                                     <p>Number of Countries: {countriesData.theRegion.countryCount} </p>
                                                 </>
                                             :
@@ -69,16 +68,13 @@ const Countries = ({ }) => {
                             </div>
                         </div>
 
-
-
-
                         {(countriesData.theRegion.countryCount > 1 || countriesData.countryList.length > 1)  && (
-                            <form class="row g-3" method='post' onSubmit={onSubmit}>
-                                <div class="col-auto">
-                                    <input type="text" class="form-control" name="searchText" placeholder="Search for Country.." />
+                            <form className="row g-3" method='post' onSubmit={onSubmit}>
+                                <div className="col-auto">
+                                    <input type="text" className="form-control" name="searchText" placeholder="Search for Country.." />
                                 </div>
-                                <div class="col-auto">
-                                    <button type="submit" value={searchCountry} class="btn-search btn-primary btn mb-3">Search</button>
+                                <div className="col-auto">
+                                    <button type="submit" value={searchCountry} className="btn-search btn-primary btn mb-3">Search</button>
                                 </div>
                             </form>
                         )}
@@ -100,11 +96,10 @@ const Countries = ({ }) => {
                                         countryCount={countriesData.theRegion.countryCount}
                                         regionImageUrl={countriesData.theRegion.imageUrl}
                                     />
-                                ))}
-                                )
-                            </>)
-                        }
-                            
+                                ))}                 
+                            </>
+                        )}
+                         
                     </div>
                 </>
 
