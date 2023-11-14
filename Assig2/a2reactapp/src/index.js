@@ -11,8 +11,6 @@ import TemperatureData from './Components/TemperatureData'
 import CountryEmission from './Components/CountryEmission'
 import AirQualityData from './Components/AirQualityData'
 
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

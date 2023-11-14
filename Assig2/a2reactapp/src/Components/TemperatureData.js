@@ -65,7 +65,7 @@ const TemperatureData = ({ }) => {
                     {temperatureData.rawTemperatureData
                         ? (
                             temperatureData.rawTemperatureData.map((data) => (
-                                <tr>
+                                <tr key={data.theCountryTempData.year}>
                                     <td>{data.theCountryTempData.year}</td>
                                     <td>{data.theCountryTempData.value}</td>
                                     {data.regionalMin &&
