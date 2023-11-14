@@ -84,7 +84,7 @@ const Cities = ({ }) => {
                         ))}
                 </div>
                 )
-                : <p>Loading data...</p>
+                : <h6 class="bg-warning">No cities found!</h6>
         }
         </div>
     )

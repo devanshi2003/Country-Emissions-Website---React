@@ -18,8 +18,11 @@ const Countries = ({ }) => {
             .catch(err => {
                 console.log(err)
             });
+        console.log(countriesData.length)
 
     }, [params.regionId, searchText])
+
+
 
     function searchCountry() {
         updateQuery(document.querySelector('[name = "searchText"]').value);
@@ -41,6 +44,7 @@ const Countries = ({ }) => {
                     <Link className="btn btn-success btn-back" to={"/Region"}>Back to Regions</Link>
                 </div>
             </div>
+           
 
         {countriesData.countryList ?
                 <>
@@ -78,6 +82,11 @@ const Countries = ({ }) => {
                                 </div>
                             </form>
                         )}
+
+                        {countriesData.countryList.length === 0 &&
+                            <h6 class="bg-warning">No countries found!</h6>
+
+                        }
 
                         {countriesData.countryList && (
                             <>                 
